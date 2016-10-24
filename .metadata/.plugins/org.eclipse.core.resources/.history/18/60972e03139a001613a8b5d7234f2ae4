@@ -669,6 +669,22 @@ public class GameImp extends JFrame implements IGameImp
 		}
 	
 	}
+//	
+//	public Map<String, String> getVariables(){
+//		Map<String, String> GameArgs = new HashMap<String,String>();
+//		
+//		GameArgs.put("max_velocity", "7.1" );//_arch.OUT_IPlayer.SetMaxVelocity()); //"7.1");
+//		GameArgs.put("rotation_speed", "0.09" );// _arch.OUT_IPlayer.SetRotationSpeed());
+//		GameArgs.put("max_bullets", "10");// _arch.OUT_IPlayer.SetMaxBullets());
+//		GameArgs.put("fire_rate", "1");// _arch.OUT_IPlayer.SetFireRate());
+//		
+//		GameArgs.put("cycles_per_second", "60");// _arch.OUT_IClock.SetCyclesPerSecond());
+//		
+//		GameArgs.put("velocity_magnitude", "20");//_arch.OUT_IBullet.SetVelocityMagnitude());
+//		GameArgs.put("max_lifespan", "60");// _arch.OUT_IBullet.SetMaxLifeSpan());
+//
+//		return GameArgs;		
+//	}
 	
 	public Map<String, String> getVariables(){
 		Map<String, String> GameArgs = new HashMap<String,String>();
@@ -692,6 +708,11 @@ public class GameImp extends JFrame implements IGameImp
 
     public GameImp (){
     	super("Asteroids");
+    	
+    	//AssignGlobalVariables(getVariables());
+    	   	
+//    	Game();
+//    	startGame();
     }
 
 	public void setArch(GameArch arch){
@@ -707,12 +728,15 @@ public class GameImp extends JFrame implements IGameImp
 	*/	
 	public void init(){
 	    //TODO Auto-generated method stub
+    	//Game();
+    	//startGame();
 	}
 	public void begin(){
 		//TODO Auto-generated method stub
 		AssignGlobalVariables(getVariables());
     	Game();
-    	startGame();		
+    	startGame();
+		
 	}
 	public void end(){
 		//TODO Auto-generated method stub
