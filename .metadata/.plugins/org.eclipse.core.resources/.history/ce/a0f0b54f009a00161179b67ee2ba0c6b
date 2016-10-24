@@ -634,10 +634,7 @@ public class GameImp extends JFrame implements IGameImp
 		main(null);
 	}
 	
-	
-	
-	
-	public void AssignGlobalVariables(Map<String, String> GArgs){
+	public static void AssignGlobalVariables(Map<String, String> GArgs){
 		
 		String mv, rs, mb, fr;
 		PlayerArgs = new ArrayList<String>();
