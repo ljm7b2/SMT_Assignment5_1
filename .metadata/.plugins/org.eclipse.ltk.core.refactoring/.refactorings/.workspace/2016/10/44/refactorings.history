@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;AsteroidsArch/src/Asteroids1/IClock.java&apos;" deleteContents="false" description="Delete resource &apos;AsteroidsArch/src/Asteroids1/IClock.java&apos;" element1="/AsteroidsArch/src/Asteroids1/IClock.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1477269135853"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;AsteroidsArch/src/Asteroids1/IClock.java&apos;" deleteContents="false" description="Delete resource &apos;AsteroidsArch/src/Asteroids1/IClock.java&apos;" element1="/AsteroidsArch/src/Asteroids1/IClock.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1477269135853"/>&#x0A;<refactoring comment="Delete resource &apos;SweetHome3D&apos;" deleteContents="true" description="Delete resource &apos;SweetHome3D&apos;" element1="/SweetHome3D" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1477271423307"/>
 </session>
