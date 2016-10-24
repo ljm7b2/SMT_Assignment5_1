@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -635,12 +634,7 @@ public class GameImp extends JFrame implements IGameImp
 		main(null);
 	}
 	
-	public Map<String, String> getVariables(){
-		Map<String, String> GameArgs = new HashMap<String,String>();
-		
-		return GameArgs;
-		
-	}
+	
 	
 	
 	public void AssignGlobalVariables(Map<String, String> GArgs){
