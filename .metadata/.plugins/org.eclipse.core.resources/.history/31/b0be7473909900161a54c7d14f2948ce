@@ -158,116 +158,116 @@ public class GameImp extends JFrame implements IGameImp
 	public void Game() {
 		//Initialize the window's basic properties.
 		
-//		setLayout(new BorderLayout());
-//		setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		setResizable(false);
-//		
-//		//Create and add the WorldPanel instance to the window.
-//		add(this.world = new WorldPanel(this), BorderLayout.CENTER);
-//		
-//		/*
-//		 * Here we add a key listener to the window so that we can process incoming
-//		 * user input.
-//		 * 
-//		 * Because the player is updated every cycle, rather than when it receives
-//		 * input (like I did for Tetris), we're only going to set a flag to indicate
-//		 * the current input state. The actual change in the player's entity's state
-//		 * will be handled in the game loop.
-//		 * 
-//		 * The reason we do this is simple. Events are only fired when input is received
-//		 * from the user. While the keyPressed event is continuously fired, it isn't
-//		 * necessarily going to be in sync with our main thread, which would cause
-//		 * all sorts of unpredictable behavior from our ship.
-//		 * 
-//		 * Note that any "pressed" event will restart the game rather than change the
-//		 * ship's state if the conditions are met.
-//		 */
-//		addKeyListener(new KeyAdapter() {
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				//Determine which key was pressed.
-//				switch(e.getKeyCode()) {
-//				
-//				//Indicate that we want to apply thrust to our ship.
-//				case KeyEvent.VK_W:
-//				case KeyEvent.VK_UP:
-//					if(!checkForRestart()) {
-//						player.setThrusting(true);
-//					}
-//					break;
-//					
-//				//Indicate that we want to rotate our ship to the left.
-//				case KeyEvent.VK_A:
-//				case KeyEvent.VK_LEFT:
-//					if(!checkForRestart()) {
-//						player.setRotateLeft(true);
-//					}
-//					break;
-//					
-//				//Indicate that we want to rotate our ship to the right.
-//				case KeyEvent.VK_D:
-//				case KeyEvent.VK_RIGHT:
-//					if(!checkForRestart()) {
-//						player.setRotateRight(true);
-//					}
-//					break;
-//					
-//				//Indicate that we want our ship to fire bullets.
-//				case KeyEvent.VK_SPACE:
-//					if(!checkForRestart()) {
-//						player.setFiring(true);
-//					}
-//					break;
-//					
-//				//Indicate that we want to pause the game.
-//				case KeyEvent.VK_P:
-//					if(!checkForRestart()) {
-//						logicTimer.setPaused(!logicTimer.isPaused());
-//					}
-//					break;
-//					
-//				//Handle all other key presses.
-//				default:
-//					checkForRestart();
-//					break;
-//					
-//				}
-//			}
-//			
-//			@Override
-//			public void keyReleased(KeyEvent e) {
-//				switch(e.getKeyCode()) {
-//
-//				//Indicate that we no long want to apply thrust to the ship.
-//				case KeyEvent.VK_W:
-//				case KeyEvent.VK_UP:
-//					player.setThrusting(false);
-//					break;
-//				
-//				//Indicate that we no longer want to rotate our ship left.
-//				case KeyEvent.VK_A:
-//				case KeyEvent.VK_LEFT:
-//					player.setRotateLeft(false);
-//					break;
-//
-//				//Indicate that we no longer want to rotate our ship right.
-//				case KeyEvent.VK_D:
-//				case KeyEvent.VK_RIGHT:
-//					player.setRotateRight(false);
-//					break;
-//					
-//				//Indicate that we no long want to fire bullets.
-//				case KeyEvent.VK_SPACE:
-//					player.setFiring(false);
-//					break;	
-//				}
-//			}
-//		});
-//		
-//		//Resize the window to the correct size, position it in the center of the screen, and display it.
-//		pack();
-//		setLocationRelativeTo(null);
-//		setVisible(true);
+		setLayout(new BorderLayout());
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
+		
+		//Create and add the WorldPanel instance to the window.
+		add(this.world = new WorldPanel(this), BorderLayout.CENTER);
+		
+		/*
+		 * Here we add a key listener to the window so that we can process incoming
+		 * user input.
+		 * 
+		 * Because the player is updated every cycle, rather than when it receives
+		 * input (like I did for Tetris), we're only going to set a flag to indicate
+		 * the current input state. The actual change in the player's entity's state
+		 * will be handled in the game loop.
+		 * 
+		 * The reason we do this is simple. Events are only fired when input is received
+		 * from the user. While the keyPressed event is continuously fired, it isn't
+		 * necessarily going to be in sync with our main thread, which would cause
+		 * all sorts of unpredictable behavior from our ship.
+		 * 
+		 * Note that any "pressed" event will restart the game rather than change the
+		 * ship's state if the conditions are met.
+		 */
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				//Determine which key was pressed.
+				switch(e.getKeyCode()) {
+				
+				//Indicate that we want to apply thrust to our ship.
+				case KeyEvent.VK_W:
+				case KeyEvent.VK_UP:
+					if(!checkForRestart()) {
+						player.setThrusting(true);
+					}
+					break;
+					
+				//Indicate that we want to rotate our ship to the left.
+				case KeyEvent.VK_A:
+				case KeyEvent.VK_LEFT:
+					if(!checkForRestart()) {
+						player.setRotateLeft(true);
+					}
+					break;
+					
+				//Indicate that we want to rotate our ship to the right.
+				case KeyEvent.VK_D:
+				case KeyEvent.VK_RIGHT:
+					if(!checkForRestart()) {
+						player.setRotateRight(true);
+					}
+					break;
+					
+				//Indicate that we want our ship to fire bullets.
+				case KeyEvent.VK_SPACE:
+					if(!checkForRestart()) {
+						player.setFiring(true);
+					}
+					break;
+					
+				//Indicate that we want to pause the game.
+				case KeyEvent.VK_P:
+					if(!checkForRestart()) {
+						logicTimer.setPaused(!logicTimer.isPaused());
+					}
+					break;
+					
+				//Handle all other key presses.
+				default:
+					checkForRestart();
+					break;
+					
+				}
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				switch(e.getKeyCode()) {
+
+				//Indicate that we no long want to apply thrust to the ship.
+				case KeyEvent.VK_W:
+				case KeyEvent.VK_UP:
+					player.setThrusting(false);
+					break;
+				
+				//Indicate that we no longer want to rotate our ship left.
+				case KeyEvent.VK_A:
+				case KeyEvent.VK_LEFT:
+					player.setRotateLeft(false);
+					break;
+
+				//Indicate that we no longer want to rotate our ship right.
+				case KeyEvent.VK_D:
+				case KeyEvent.VK_RIGHT:
+					player.setRotateRight(false);
+					break;
+					
+				//Indicate that we no long want to fire bullets.
+				case KeyEvent.VK_SPACE:
+					player.setFiring(false);
+					break;	
+				}
+			}
+		});
+		
+		//Resize the window to the correct size, position it in the center of the screen, and display it.
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 	
 	/**
@@ -638,117 +638,8 @@ public class GameImp extends JFrame implements IGameImp
 	private GameArch _arch;
 
     public GameImp (){
-    	super("Asteroids");
-    	setLayout(new BorderLayout());
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
-		
-		//Create and add the WorldPanel instance to the window.
-		add(this.world = new WorldPanel(this), BorderLayout.CENTER);
-		
-		/*
-		 * Here we add a key listener to the window so that we can process incoming
-		 * user input.
-		 * 
-		 * Because the player is updated every cycle, rather than when it receives
-		 * input (like I did for Tetris), we're only going to set a flag to indicate
-		 * the current input state. The actual change in the player's entity's state
-		 * will be handled in the game loop.
-		 * 
-		 * The reason we do this is simple. Events are only fired when input is received
-		 * from the user. While the keyPressed event is continuously fired, it isn't
-		 * necessarily going to be in sync with our main thread, which would cause
-		 * all sorts of unpredictable behavior from our ship.
-		 * 
-		 * Note that any "pressed" event will restart the game rather than change the
-		 * ship's state if the conditions are met.
-		 */
-		addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				//Determine which key was pressed.
-				switch(e.getKeyCode()) {
-				
-				//Indicate that we want to apply thrust to our ship.
-				case KeyEvent.VK_W:
-				case KeyEvent.VK_UP:
-					if(!checkForRestart()) {
-						player.setThrusting(true);
-					}
-					break;
-					
-				//Indicate that we want to rotate our ship to the left.
-				case KeyEvent.VK_A:
-				case KeyEvent.VK_LEFT:
-					if(!checkForRestart()) {
-						player.setRotateLeft(true);
-					}
-					break;
-					
-				//Indicate that we want to rotate our ship to the right.
-				case KeyEvent.VK_D:
-				case KeyEvent.VK_RIGHT:
-					if(!checkForRestart()) {
-						player.setRotateRight(true);
-					}
-					break;
-					
-				//Indicate that we want our ship to fire bullets.
-				case KeyEvent.VK_SPACE:
-					if(!checkForRestart()) {
-						player.setFiring(true);
-					}
-					break;
-					
-				//Indicate that we want to pause the game.
-				case KeyEvent.VK_P:
-					if(!checkForRestart()) {
-						logicTimer.setPaused(!logicTimer.isPaused());
-					}
-					break;
-					
-				//Handle all other key presses.
-				default:
-					checkForRestart();
-					break;
-					
-				}
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				switch(e.getKeyCode()) {
-
-				//Indicate that we no long want to apply thrust to the ship.
-				case KeyEvent.VK_W:
-				case KeyEvent.VK_UP:
-					player.setThrusting(false);
-					break;
-				
-				//Indicate that we no longer want to rotate our ship left.
-				case KeyEvent.VK_A:
-				case KeyEvent.VK_LEFT:
-					player.setRotateLeft(false);
-					break;
-
-				//Indicate that we no longer want to rotate our ship right.
-				case KeyEvent.VK_D:
-				case KeyEvent.VK_RIGHT:
-					player.setRotateRight(false);
-					break;
-					
-				//Indicate that we no long want to fire bullets.
-				case KeyEvent.VK_SPACE:
-					player.setFiring(false);
-					break;	
-				}
-			}
-		});
-		
-		//Resize the window to the correct size, position it in the center of the screen, and display it.
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
+    	//super("Asteroids");
+    	Game();
     }
 
 	public void setArch(GameArch arch){
