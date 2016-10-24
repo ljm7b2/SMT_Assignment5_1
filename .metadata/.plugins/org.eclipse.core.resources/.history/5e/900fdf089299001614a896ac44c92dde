@@ -638,7 +638,6 @@ public class GameImp extends JFrame implements IGameImp
 	private GameArch _arch;
 
     public GameImp (){
-    	super("Asteroids");
     	Game();
     	startGame();
     }
@@ -659,6 +658,8 @@ public class GameImp extends JFrame implements IGameImp
 	}
 	public void begin(){
 		//TODO Auto-generated method stub
+//		String[] args = {};
+//		GameImp.main(args);
 	}
 	public void end(){
 		//TODO Auto-generated method stub
