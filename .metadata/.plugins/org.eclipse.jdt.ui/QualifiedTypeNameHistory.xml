@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="Asteroids1.WorldPanel"/>
 <fullyQualifiedTypeName name="AsteroidsArch.GameImp"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
 </qualifiedTypeNameHistroy>

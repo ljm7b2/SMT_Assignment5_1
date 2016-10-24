@@ -3,10 +3,17 @@ package AsteroidsArch;
 
 import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
+import edu.uci.isr.myx.fw.MyxUtils;
 
 public class GameArch extends AbstractMyxSimpleBrick
 {
+    public static final IMyxName msg_IPlayer = MyxUtils.createName("AsteroidsArch.IPlayer");
+    public static final IMyxName msg_IBullet = MyxUtils.createName("AsteroidsArch.IBullet");
+    public static final IMyxName msg_IClock = MyxUtils.createName("AsteroidsArch.IClock");
 
+    public IPlayer OUT_IPlayer;
+    public IBullet OUT_IBullet;
+    public IClock OUT_IClock;
 
 	private IGameImp _imp;
 
@@ -33,6 +40,21 @@ public class GameArch extends AbstractMyxSimpleBrick
     }
     
     public void begin(){
+        OUT_IPlayer = (IPlayer) MyxUtils.getFirstRequiredServiceObject(this,msg_IPlayer);
+        if (OUT_IPlayer == null){
+ 			System.err.println("Error: Interface AsteroidsArch.IPlayer returned null");
+			return;       
+        }
+        OUT_IBullet = (IBullet) MyxUtils.getFirstRequiredServiceObject(this,msg_IBullet);
+        if (OUT_IBullet == null){
+ 			System.err.println("Error: Interface AsteroidsArch.IBullet returned null");
+			return;       
+        }
+        OUT_IClock = (IClock) MyxUtils.getFirstRequiredServiceObject(this,msg_IClock);
+        if (OUT_IClock == null){
+ 			System.err.println("Error: Interface AsteroidsArch.IClock returned null");
+			return;       
+        }
         _imp.begin();
     }
     
