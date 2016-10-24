@@ -2,12 +2,12 @@ package AsteroidsArch;
 
 public interface IPlayer {	
 	
-	String SetMaxVelocity();
+	public String SetMaxVelocity();
 	
-	String SetRotationSpeed();
+	public String SetRotationSpeed();
 	
-	String SetMaxBullets();
+	public String SetMaxBullets();
 	
-	String SetFireRate();
+	public String SetFireRate();
 
 }

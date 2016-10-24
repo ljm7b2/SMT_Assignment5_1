@@ -2,8 +2,8 @@ package AsteroidsArch;
 
 public interface IBullet {
 	
-	String SetVelocityMagnitude();
+	public String SetVelocityMagnitude();
 	
-	String SetMaxLifeSpan();
+	public String SetMaxLifeSpan();
 
 }
