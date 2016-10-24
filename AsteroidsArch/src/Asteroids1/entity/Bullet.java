@@ -15,12 +15,12 @@ public class Bullet extends Entity {
 	/**
 	 * The magnitude of the velocity of a Bullet.
 	 */
-	private static final double VELOCITY_MAGNITUDE = 6.75;
+	private double VELOCITY_MAGNITUDE = 6.75;
 	
 	/**
 	 * The maximum number of cycles that a Bullet can exist.
 	 */
-	private static final int MAX_LIFESPAN = 60;
+	private int MAX_LIFESPAN = 60;
 	
 	/**
 	 * The number of cycles this Bullet has existed.
@@ -32,9 +32,10 @@ public class Bullet extends Entity {
 	 * @param owner The object that fired the bullet.
 	 * @param angle The direction of the Bullet.
 	 */
-	public Bullet(Entity owner, double angle) {
+	public Bullet(Entity owner, double angle, double VELOCITY_MAGNITUDE, int mL) {
 		super(new Vector2(owner.position), new Vector2(angle).scale(VELOCITY_MAGNITUDE), 2.0, 0);
-		this.lifespan = MAX_LIFESPAN;
+		this.lifespan = mL;
+		this.VELOCITY_MAGNITUDE = VELOCITY_MAGNITUDE;
 	}
 	
 	@Override

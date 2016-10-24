@@ -21,12 +21,12 @@ public class Player extends Entity {
 	/**
 	 * The maximum speed at which our ship can travel.
 	 */
-	private static final double MAX_VELOCITY_MAGNITUDE = 6.5;
+	private double MAX_VELOCITY_MAGNITUDE = 6.5;
 	
 	/**
 	 * The speed at which the ship rotates.
 	 */
-	private static final double ROTATION_SPEED = 0.052;
+	private double ROTATION_SPEED = 0.052;
 	
 	/**
 	 * The factor at which our ship slows down.
@@ -36,18 +36,18 @@ public class Player extends Entity {
 	/**
 	 * The maximum number of bullets that can be fired at once.
 	 */
-	private static final int MAX_BULLETS = 4;
+	private int MAX_BULLETS = 4;
 	
 	/**
 	 * The number of cycles that must elapse between shots.
 	 */
-	private static final int FIRE_RATE = 4;
+	private int FIRE_RATE = 4;
 	
 	/**
 	 * The maximum number of shots that can be fired consecutively before
 	 * overheating.
 	 */
-	private static final int MAX_CONSECUTIVE_SHOTS = 8;
+	private final int MAX_CONSECUTIVE_SHOTS = 8;
 	
 	/**
 	 * The number of cycles that must elapse before we stop overheating.
@@ -104,10 +104,14 @@ public class Player extends Entity {
 	 */
 	private List<Bullet> bullets;
 	
+	private double velocity_magnitude;
+	
+	private int max_lifespan;
+	
 	/**
 	 * Initializes a new Player instance.
 	 */
-	public Player() {
+	public Player(List<String> PlayerArgs) {
 		super(new Vector2(WorldPanel.WORLD_SIZE / 2.0, WorldPanel.WORLD_SIZE / 2.0), new Vector2(0.0, 0.0), 10.0, 0);
 		this.bullets = new ArrayList<>();
 		this.rotation = DEFAULT_ROTATION;
@@ -119,6 +123,23 @@ public class Player extends Entity {
 		this.fireCooldown = 0;
 		this.overheatCooldown = 0;
 		this.animationFrame = 0;
+		
+//		this.MAX_VELOCITY_MAGNITUDE = Double.valueOf(PlayerArgs.get(0));
+//		this.ROTATION_SPEED = Double.valueOf(PlayerArgs.get(1));
+//		this.MAX_BULLETS = Integer.valueOf(PlayerArgs.get(2));
+//		this.FIRE_RATE = Integer.valueOf(PlayerArgs.get(3));
+//		
+//		this.velocity_magnitude = Double.valueOf(PlayerArgs.get(4));
+//		this.max_lifespan = Integer.valueOf(PlayerArgs.get(5));
+		
+		this.MAX_VELOCITY_MAGNITUDE = (Double.valueOf(PlayerArgs.get(0))) != null ? Double.valueOf(PlayerArgs.get(0)) : 6.5;
+		this.ROTATION_SPEED = (Double.valueOf(PlayerArgs.get(1))) != null ? Double.valueOf(PlayerArgs.get(1)) : 0.052;
+		this.MAX_BULLETS = (Integer.valueOf(PlayerArgs.get(2))) != null ? Integer.valueOf(PlayerArgs.get(2)) : 4;
+		this.FIRE_RATE = (Integer.valueOf(PlayerArgs.get(3))) != null ? Integer.valueOf(PlayerArgs.get(3)) : 4;
+		
+		this.velocity_magnitude = (Double.valueOf(PlayerArgs.get(4))) != null ? Double.valueOf(PlayerArgs.get(4)) : 6.75;
+		this.max_lifespan = (Integer.valueOf(PlayerArgs.get(5))) != null ? Integer.valueOf(PlayerArgs.get(5)) : 60;
+		
 	}
 	
 	/**
@@ -256,7 +277,7 @@ public class Player extends Entity {
 			if(bullets.size() < MAX_BULLETS) {
 				this.fireCooldown = FIRE_RATE;
 				
-				Bullet bullet = new Bullet(this, rotation);
+				Bullet bullet = new Bullet(this, rotation, velocity_magnitude, max_lifespan);
 				bullets.add(bullet);
 				game.registerEntity(bullet);
 			}

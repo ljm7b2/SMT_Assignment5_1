@@ -40,18 +40,18 @@ public class PlayerImp implements IPlayerImp
     
     public String SetMaxVelocity ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "7.1";
     }
     public String SetRotationSpeed ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "0.09";
     }
     public String SetMaxBullets ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "120";
     }
     public String SetFireRate ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "1";
     }
 }

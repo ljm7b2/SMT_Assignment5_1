@@ -40,10 +40,10 @@ public class BulletImp implements IBulletImp
     
     public String SetVelocityMagnitude ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "20";
     }
     public String SetMaxLifeSpan ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "120";
     }
 }

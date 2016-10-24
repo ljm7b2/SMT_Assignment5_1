@@ -40,6 +40,6 @@ public class ClockImp implements IClockImp
     
     public String SetCyclesPerSecond ()   {
 		//TODO Auto-generated method stub
-		return null;
+		return "60";
     }
 }

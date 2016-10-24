@@ -229,6 +229,12 @@ public class GameImp extends JFrame implements IGameImp
 						logicTimer.setPaused(!logicTimer.isPaused());
 					}
 					break;
+				case KeyEvent.VK_R:
+					if(!checkForRestart()) {
+						AssignGlobalVariables(getVariables2());
+						resetGame();
+					}
+					break;
 					
 				//Handle all other key presses.
 				default:
@@ -294,7 +300,7 @@ public class GameImp extends JFrame implements IGameImp
 		this.random = new Random();
 		this.entities = new LinkedList<Entity>();
 		this.pendingEntities = new ArrayList<>();
-		this.player = new Player();
+		this.player = new Player(PlayerArgs);
 		
 		//Set the variables to their default values.
 		resetGame();
@@ -626,21 +632,14 @@ public class GameImp extends JFrame implements IGameImp
 	 * Entry point of the program. Creates and starts a new game instance.
 	 * @param args Unused command line arguments.
 	 */
-	public static void main(String[] args) {
-		GameImp game = new GameImp();
-		game.startGame();
-	}
-	
-	public void callMain(){
-		main(null);
-	}
-	
-	public Map<String, String> getVariables(){
-		Map<String, String> GameArgs = new HashMap<String,String>();
-		
-		return GameArgs;
-		
-	}
+//	public static void main(String[] args) {
+//		GameImp game = new GameImp();
+//		game.startGame();
+//	}
+//	
+//	public void callMain(){
+//		main(null);
+//	}
 	
 	
 	public void AssignGlobalVariables(Map<String, String> GArgs){
@@ -672,14 +671,49 @@ public class GameImp extends JFrame implements IGameImp
 	
 	}
 	
+	public Map<String, String> getVariables(){
+		Map<String, String> GameArgs = new HashMap<String,String>();
+		
+		GameArgs.put("max_velocity", "7.1" );//_arch.OUT_IPlayer.SetMaxVelocity()); //"7.1");
+		GameArgs.put("rotation_speed", "0.09" );// _arch.OUT_IPlayer.SetRotationSpeed());
+		GameArgs.put("max_bullets", "10");// _arch.OUT_IPlayer.SetMaxBullets());
+		GameArgs.put("fire_rate", "1");// _arch.OUT_IPlayer.SetFireRate());
+		
+		GameArgs.put("cycles_per_second", "60");// _arch.OUT_IClock.SetCyclesPerSecond());
+		
+		GameArgs.put("velocity_magnitude", "20");//_arch.OUT_IBullet.SetVelocityMagnitude());
+		GameArgs.put("max_lifespan", "60");// _arch.OUT_IBullet.SetMaxLifeSpan());
+
+		return GameArgs;		
+	}
 	
+	public Map<String, String> getVariables2(){
+		Map<String, String> GameArgs = new HashMap<String,String>();
+		
+		GameArgs.put("max_velocity", _arch.OUT_IPlayer.SetMaxVelocity());
+		GameArgs.put("rotation_speed", _arch.OUT_IPlayer.SetRotationSpeed());
+		GameArgs.put("max_bullets",_arch.OUT_IPlayer.SetMaxBullets());
+		GameArgs.put("fire_rate", _arch.OUT_IPlayer.SetFireRate());
+		
+		GameArgs.put("cycles_per_second", _arch.OUT_IClock.SetCyclesPerSecond());
+		
+		GameArgs.put("velocity_magnitude", _arch.OUT_IBullet.SetVelocityMagnitude());
+		GameArgs.put("max_lifespan", _arch.OUT_IBullet.SetMaxLifeSpan());
+
+		return GameArgs;		
+	}
 	
 	private GameArch _arch;
+	
+	
 
     public GameImp (){
     	super("Asteroids");
-    	Game();
-    	startGame();
+    	
+    	//AssignGlobalVariables(getVariables());
+    	   	
+//    	Game();
+//    	startGame();
     }
 
 	public void setArch(GameArch arch){
@@ -700,6 +734,10 @@ public class GameImp extends JFrame implements IGameImp
 	}
 	public void begin(){
 		//TODO Auto-generated method stub
+		AssignGlobalVariables(getVariables2());
+    	Game();
+    	startGame();
+		
 	}
 	public void end(){
 		//TODO Auto-generated method stub
