@@ -667,25 +667,6 @@ public class GameImp extends JFrame implements IGameImp
 		//TODO Auto-generated method stub
 	}
 
-	@Override
-	public void setPaused(boolean paused) {
-		// TODO Auto-generated method stub
-		_arch.In
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean hasElapsedCycle() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	/*
   	  Implementation primitives required by the architecture
 	*/

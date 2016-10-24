@@ -3,11 +3,9 @@ package AsteroidsArch;
 
 import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
-import edu.uci.isr.myx.fw.MyxUtils;
 
-public class GameArch extends AbstractMyxSimpleBrick implements IClock
+public class GameArch extends AbstractMyxSimpleBrick
 {
-    public static final IMyxName msg_IClock = MyxUtils.createName("AsteroidsArch.IClock");
 
 
 	private IGameImp _imp;
@@ -47,23 +45,6 @@ public class GameArch extends AbstractMyxSimpleBrick implements IClock
     }
     
 	public Object getServiceObject(IMyxName arg0) {
-		if (arg0.equals(msg_IClock)){
-			return this;
-		}        
 		return null;
 	}
-  
-    
-    public void setPaused (boolean paused)   {
-		_imp.setPaused(paused);
-    }    
-    public boolean isPaused ()   {
-		return _imp.isPaused();
-    }    
-    public void update ()   {
-		_imp.update();
-    }    
-    public boolean hasElapsedCycle ()   {
-		return _imp.hasElapsedCycle();
-    }    
 }
