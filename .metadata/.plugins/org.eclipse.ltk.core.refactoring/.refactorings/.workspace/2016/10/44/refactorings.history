@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;AsteroidsArch/src/Asteroids1/IClock.java&apos;" deleteContents="false" description="Delete resource &apos;AsteroidsArch/src/Asteroids1/IClock.java&apos;" element1="/AsteroidsArch/src/Asteroids1/IClock.java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1477269135853"/>
+</session>

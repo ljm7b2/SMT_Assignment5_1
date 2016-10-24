@@ -1,0 +1,5 @@
+package AsteroidsArch;
+
+public interface IClock {
+
+}

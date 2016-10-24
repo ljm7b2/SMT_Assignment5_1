@@ -626,9 +626,5 @@ public class Game extends JFrame {
 		Game game = new Game();
 		game.startGame();
 	}
-	
-	public void callMain(){
-		main(null);
-	}
 
 }
