@@ -2,7 +2,7 @@ package Asteroids1.entity;
 
 import java.awt.Graphics2D;
 
-import Asteroids1.Game;
+import AsteroidsArch.GameImp;
 import Asteroids1.util.Vector2;
 
 /**
@@ -38,7 +38,7 @@ public class Bullet extends Entity {
 	}
 	
 	@Override
-	public void update(Game game) {
+	public void update(GameImp game) {
 		super.update(game);
 		
 		//Decrement the lifespan of the bullet, and remove it if needed.
@@ -49,14 +49,14 @@ public class Bullet extends Entity {
 	}
 
 	@Override
-	public void handleCollision(Game game, Entity other) {
+	public void handleCollision(GameImp game, Entity other) {
 		if(other.getClass() != Player.class) {
 			flagForRemoval();
 		}
 	}
 	
 	@Override
-	public void draw(Graphics2D g, Game game) {
+	public void draw(Graphics2D g, GameImp game) {
 		g.drawOval(-1, -1, 2, 2);
 	}
 

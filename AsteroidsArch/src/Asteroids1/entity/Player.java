@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Asteroids1.Game;
+import AsteroidsArch.GameImp;
 import Asteroids1.WorldPanel;
 import Asteroids1.util.Vector2;
 
@@ -173,7 +173,7 @@ public class Player extends Entity {
 	}
 		
 	@Override
-	public void update(Game game) {
+	public void update(GameImp game) {
 		super.update(game);
 		
 		//Increment the animation frame.
@@ -282,7 +282,7 @@ public class Player extends Entity {
 	}
 	
 	@Override
-	public void handleCollision(Game game, Entity other) {
+	public void handleCollision(GameImp game, Entity other) {
 		//Kill the player if it collides with an Asteroid.
 		if(other.getClass() == Asteroid.class) {
 			game.killPlayer();
@@ -290,7 +290,7 @@ public class Player extends Entity {
 	}
 	
 	@Override
-	public void draw(Graphics2D g, Game game) {
+	public void draw(Graphics2D g, GameImp game) {
 		/*
 		 * When the player recently spawned, it will flash for a few seconds to indicate
 		 * that it is invulnerable. The player will not flash if the game is paused.

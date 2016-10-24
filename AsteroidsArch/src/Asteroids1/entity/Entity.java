@@ -2,9 +2,9 @@ package Asteroids1.entity;
 
 import java.awt.Graphics2D;
 
-import Asteroids1.Game;
 import Asteroids1.WorldPanel;
 import Asteroids1.util.Vector2;
+import AsteroidsArch.GameImp;
 
 /**
  * Represents an Entity within the game world.
@@ -127,7 +127,7 @@ public abstract class Entity {
 	 * Updates the state of this Entity.
 	 * @param game The game instance.
 	 */
-	public void update(Game game) {
+	public void update(GameImp game) {
 		position.add(velocity);
 		if(position.x < 0.0f) {
 			position.x += WorldPanel.WORLD_SIZE;
@@ -164,12 +164,12 @@ public abstract class Entity {
 	 * @param game The game instance.
 	 * @param other The Entity that we collided with.
 	 */
-	public abstract void handleCollision(Game game, Entity other);
+	public abstract void handleCollision(GameImp game, Entity other);
 	
 	/**
 	 * Draw this Entity onto the window.
 	 * @param g The Graphics instance.
 	 * @param game The game instance.
 	 */
-	public abstract void draw(Graphics2D g, Game game);
+	public abstract void draw(Graphics2D g, GameImp game);
 }

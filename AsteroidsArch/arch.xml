@@ -93,7 +93,7 @@
     </types:archTypes>
 <types:archStructure types:id="archStructureffffff83-f42c3acc-70278c7c-666b0002" xsi:type="types:ArchStructure">
         <types:description xsi:type="instance:Description">Asteroidsys</types:description>
-        <types:component xsi:type="implementationext:ComponentImpl" types:id="componentffffff83-f42c98f7-16a3bf31-666b0006">
+        <types:component types:id="componentffffff83-f42c98f7-16a3bf31-666b0006" xsi:type="implementationext:ComponentImpl">
             <types:description xsi:type="instance:Description">Game</types:description>
             <implementationext:implementation xsi:type="javaimplementation:JavaImplementation">
                 <javaimplementation:mainClass xsi:type="javaimplementation:JavaClassFile">
@@ -153,11 +153,11 @@
                     <changes:interface xlink:href="#interfaceffffff83-f42d994b-7e8672b7-666b0045" xlink:type="simple" xsi:type="instance:XMLLink"/>
                 </changes:interfaceChange>
             </changes:componentChange>
-            <changes:componentChange changes:id="componentChangeffffff83-f436c95e-03121174-666b009b" xsi:type="changes:ComponentChange" changes:type="update">
+            <changes:componentChange changes:id="componentChangeffffff83-f436c95e-03121174-666b009b" changes:type="update" xsi:type="changes:ComponentChange">
                 <changes:description xsi:type="instance:Description">Remove Interface</changes:description>
-                <changes:component xlink:href="#componentffffff83-f42c98f7-16a3bf31-666b0006" xsi:type="instance:XMLLink" xlink:type="simple"/>
-                <changes:interfaceChange changes:id="interfaceChangeffffff83-f436c95f-03764dfe-666b009c" xsi:type="changes:InterfaceChange" changes:type="remove">
-                    <changes:interface xlink:href="#Copy of interfaceffffff83-f42d994b-7e8672b7-666b0045" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:component xlink:href="#componentffffff83-f42c98f7-16a3bf31-666b0006" xlink:type="simple" xsi:type="instance:XMLLink"/>
+                <changes:interfaceChange changes:id="interfaceChangeffffff83-f436c95f-03764dfe-666b009c" changes:type="remove" xsi:type="changes:InterfaceChange">
+                    <changes:interface xlink:href="#Copy of interfaceffffff83-f42d994b-7e8672b7-666b0045" xlink:type="simple" xsi:type="instance:XMLLink"/>
                     <changes:copyOfRemovedInterface types:id="Copy of interfaceffffff83-f42d994b-7e8672b7-666b0045" xsi:type="types:Interface">
                 <types:description xsi:type="instance:Description">[New Interface]</types:description>
                 <types:direction xsi:type="instance:Direction">none</types:direction>

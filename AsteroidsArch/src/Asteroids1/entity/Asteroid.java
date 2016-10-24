@@ -3,7 +3,7 @@ package Asteroids1.entity;
 import java.awt.Graphics2D;
 import java.util.Random;
 
-import Asteroids1.Game;
+import AsteroidsArch.GameImp;
 import Asteroids1.WorldPanel;
 import Asteroids1.util.Vector2;
 
@@ -124,18 +124,18 @@ public class Asteroid extends Entity {
 	}
 	
 	@Override
-	public void update(Game game) {
+	public void update(GameImp game) {
 		super.update(game);
 		rotate(rotationSpeed); //Rotate the image each frame.
 	}
 
 	@Override
-	public void draw(Graphics2D g, Game game) {
+	public void draw(Graphics2D g, GameImp game) {
 		g.drawPolygon(size.polygon); //Draw the Asteroid.
 	}
 	
 	@Override
-	public void handleCollision(Game game, Entity other) {
+	public void handleCollision(GameImp game, Entity other) {
 		//Prevent collisions with other asteroids.
 		if(other.getClass() != Asteroid.class) {
 			//Only spawn "children" if we're not a Small asteroid.
