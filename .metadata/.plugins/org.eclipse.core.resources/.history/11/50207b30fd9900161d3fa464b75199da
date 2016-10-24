@@ -635,44 +635,44 @@ public class GameImp extends JFrame implements IGameImp
 		main(null);
 	}
 	
-//	public static Map<String, String> getVariables(){
-//		
-//		  Map<String, String> GameArgs = new HashMap<String,String>();
-//		  
-//		  
-//		  
-//		  return GameArgs;
-//		
-//	}
-//	
-//	public static void AssignGlobalVariables(Map<String, String> GArgs){
-//		
-//		String mv, rs, mb, fr;
-//		PlayerArgs = new ArrayList<String>();
-//	
-//		if(GArgs.containsKey("cycles_per_second") && !(GArgs.get("cycles_per_second").toString()).equals("60")){
-//			FRAMES_PER_SECOND = Integer.parseInt(GArgs.get("cycles_per_second").toString());
-//		}
-//		
-//		if(GArgs.containsKey("max_velocity") && GArgs.containsKey("rotation_speed")
-//				&& GArgs.containsKey("max_bullets") && GArgs.containsKey("fire_rate")){
-//			mv = GArgs.get("max_velocity");
-//			rs = GArgs.get("rotation_speed");
-//			mb = GArgs.get("max_bullets");
-//			fr = GArgs.get("fire_rate");
-//			
-//			PlayerArgs.add(mv);
-//			PlayerArgs.add(rs);
-//			PlayerArgs.add(mb);
-//			PlayerArgs.add(fr);			
-//		}
-//		
-//		if(GArgs.containsKey("velocity_magnitude") && GArgs.containsKey("max_lifespan")){
-//			PlayerArgs.add(GArgs.get("velocity_magnitude"));
-//			PlayerArgs.add(GArgs.get("max_lifespan"));
-//		}
-//	
-//	}
+	public static Map<String, String> getVariables(){
+		
+		  Map<String, String> GameArgs = new HashMap<String,String>();
+		  
+		  
+		  
+		  return GameArgs;
+		
+	}
+	
+	public static void AssignGlobalVariables(Map<String, String> GArgs){
+		
+		String mv, rs, mb, fr;
+		PlayerArgs = new ArrayList<String>();
+	
+		if(GArgs.containsKey("cycles_per_second") && !(GArgs.get("cycles_per_second").toString()).equals("60")){
+			FRAMES_PER_SECOND = Integer.parseInt(GArgs.get("cycles_per_second").toString());
+		}
+		
+		if(GArgs.containsKey("max_velocity") && GArgs.containsKey("rotation_speed")
+				&& GArgs.containsKey("max_bullets") && GArgs.containsKey("fire_rate")){
+			mv = GArgs.get("max_velocity");
+			rs = GArgs.get("rotation_speed");
+			mb = GArgs.get("max_bullets");
+			fr = GArgs.get("fire_rate");
+			
+			PlayerArgs.add(mv);
+			PlayerArgs.add(rs);
+			PlayerArgs.add(mb);
+			PlayerArgs.add(fr);			
+		}
+		
+		if(GArgs.containsKey("velocity_magnitude") && GArgs.containsKey("max_lifespan")){
+			PlayerArgs.add(GArgs.get("velocity_magnitude"));
+			PlayerArgs.add(GArgs.get("max_lifespan"));
+		}
+	
+}
 	
 	
 	
@@ -699,6 +699,10 @@ public class GameImp extends JFrame implements IGameImp
 	*/	
 	public void init(){
 	    //TODO Auto-generated method stub
+		
+    	//super("Asteroids");
+    	Game();
+    	startGame();
 	}
 	public void begin(){
 		//TODO Auto-generated method stub
