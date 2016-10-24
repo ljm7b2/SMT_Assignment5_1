@@ -3,10 +3,13 @@ package AsteroidsArch;
 
 import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
+import edu.uci.isr.myx.fw.MyxUtils;
 
 public class GameArch extends AbstractMyxSimpleBrick
 {
+    public static final IMyxName msg_IClock = MyxUtils.createName("AsteroidsArch.IClock");
 
+    public IClock OUT_IClock;
 
 	private IGameImp _imp;
 
@@ -33,6 +36,11 @@ public class GameArch extends AbstractMyxSimpleBrick
     }
     
     public void begin(){
+        OUT_IClock = (IClock) MyxUtils.getFirstRequiredServiceObject(this,msg_IClock);
+        if (OUT_IClock == null){
+ 			System.err.println("Error: Interface AsteroidsArch.IClock returned null");
+			return;       
+        }
         _imp.begin();
     }
     

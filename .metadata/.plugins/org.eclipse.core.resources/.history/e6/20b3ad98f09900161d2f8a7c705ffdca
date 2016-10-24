@@ -1,0 +1,16 @@
+package AsteroidsArch;
+
+
+public interface IClock {
+	
+	public Object setPaused(boolean paused, Object clock);
+	
+	public Object isPaused(Object clock);
+	
+	public Object update(Object clock);
+	
+	public Object hasElapsedCycle(Object clock);
+	
+	public Object newClock(Object clock);
+
+}

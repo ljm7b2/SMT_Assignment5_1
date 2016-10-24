@@ -1,13 +1,16 @@
 package AsteroidsArch;
+import AsteroidsArch.ClockImp;
 
 public interface IClock {
 	
-	public void setPaused(boolean paused);
+	public ClockImp setPaused(boolean paused, ClockImp clock);
 	
-	public boolean isPaused();
+	public boolean isPaused(ClockImp clock);
 	
-	public void update();
+	public ClockImp update(ClockImp clock);
 	
-	public boolean hasElapsedCycle();
+	public boolean hasElapsedCycle(ClockImp clock);
+	
+	public ClockImp newClock();
 
 }
