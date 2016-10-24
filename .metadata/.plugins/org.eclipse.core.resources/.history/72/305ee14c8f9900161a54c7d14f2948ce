@@ -157,7 +157,7 @@ public class GameImp extends JFrame implements IGameImp
 	 */
 	public void Game() {
 		//Initialize the window's basic properties.
-		
+		//super("Asteroids");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
@@ -638,7 +638,6 @@ public class GameImp extends JFrame implements IGameImp
 	private GameArch _arch;
 
     public GameImp (){
-    	super("Asteroids");
     	Game();
     }
 

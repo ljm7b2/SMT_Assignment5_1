@@ -95,6 +95,12 @@
         <types:description xsi:type="instance:Description">Asteroidsys</types:description>
         <types:component types:id="componentffffff83-f42c98f7-16a3bf31-666b0006" xsi:type="implementationext:ComponentImpl">
             <types:description xsi:type="instance:Description">Game</types:description>
+            <types:interface types:id="interfaceffffff83-f47a1e49-2bf2e61c-a8ed005b" xsi:type="types:Interface">
+                <types:description xsi:type="instance:Description">[New Interface]</types:description>
+                <types:direction xsi:type="instance:Direction">in</types:direction>
+                <types:type xlink:href="#interfaceTypeffffff83-f4103a8a-91c18da7-14fb000c" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </types:interface>
+            
             <implementationext:implementation xsi:type="javaimplementation:JavaImplementation">
                 <javaimplementation:mainClass xsi:type="javaimplementation:JavaClassFile">
                     <javaimplementation:javaClassName xsi:type="javaimplementation:JavaClassName">AsteroidsArch.GameArch</javaimplementation:javaClassName>
@@ -106,6 +112,25 @@
             
             
         </types:component>
+        <types:component types:id="componentffffff83-f47ac41f-50a0ec22-a8ed0067" xsi:type="types:Component">
+            <types:description xsi:type="instance:Description">Clock</types:description>
+            <types:interface types:id="interfaceffffff83-f47af6ef-a5ca6a3b-a8ed008b" xsi:type="types:Interface">
+                <types:description xsi:type="instance:Description">[New Interface]</types:description>
+                <types:direction xsi:type="instance:Direction">out</types:direction>
+                <types:type xlink:href="#interfaceTypeffffff83-f4103a8a-91c18da7-14fb000c" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </types:interface>
+        </types:component>
+        <types:link types:id="linkffffff83-f47b4dc1-c3cd55ea-a8ed00c9" xsi:type="types:Link">
+            <types:description xsi:type="instance:Description">[New Link]</types:description>
+            <types:point xsi:type="instance:Point">
+                <instance:anchorOnInterface xlink:href="#interfaceffffff83-f47a1e49-2bf2e61c-a8ed005b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </types:point>
+            <types:point xsi:type="instance:Point">
+                <instance:anchorOnInterface xlink:href="#interfaceffffff83-f47af6ef-a5ca6a3b-a8ed008b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </types:point>
+        </types:link>
+        
+        
     </types:archStructure>
     <hints3:renderingHints3 xsi:type="hints3:RenderingHints3">
         <hints3:hintedElement hints3:maintainer="edu.uci.isr.archstudio4.comp.archipelago" hints3:version="4.0.0" xsi:type="hints3:HintBundle"/>
@@ -115,7 +140,7 @@
                 <hints3:hintedElement xsi:type="hints3:HintedElement">
                     <hints3:target xlink:href="#componentffffff83-f42c98f7-16a3bf31-666b0006" xlink:type="simple" xsi:type="instance:XMLLink"/>
                     <hints3:property hints3:name="glass/boundingBox" xsi:type="hints3:Property">
-                        <hints3:value hints3:data="10448,10235,100,100" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
+                        <hints3:value hints3:data="10200,10200,100,100" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
                     <hints3:property hints3:name="background/color" xsi:type="hints3:Property">
                         <hints3:value hints3:data="197,203,255" hints3:type="org.eclipse.swt.graphics.RGB" xsi:type="hints3:PropertyValue"/>
@@ -135,6 +160,60 @@
                         <hints3:value hints3:data="255,255,255" hints3:type="org.eclipse.swt.graphics.RGB" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
                 </hints3:hintedElement>
+                <hints3:hintedElement xsi:type="hints3:HintedElement">
+                    <hints3:target xlink:href="#interfaceffffff83-f47a1e49-2bf2e61c-a8ed005b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:property hints3:name="glass/anchorPoint" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="10300,10225" hints3:type="org.eclipse.swt.graphics.Point" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="glass/anchorPoint-StuckInfo" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="{EDGE,{1.0,0.25}}" hints3:type="{[Ljava.lang.Object;,2,enum:edu.uci.isr.bna4.logics.coordinating.MaintainStickyPointLogic$StickyMode,{[F,2,java.lang.Float,java.lang.Float}}" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="background/color" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="255,255,255" hints3:type="org.eclipse.swt.graphics.RGB" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                </hints3:hintedElement>
+                <hints3:hintedElement xsi:type="hints3:HintedElement">
+                    <hints3:target xlink:href="#componentffffff83-f47ac41f-50a0ec22-a8ed0067" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:property hints3:name="glass/boundingBox" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="10550,10175,100,100" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="background/color" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="197,203,255" hints3:type="org.eclipse.swt.graphics.RGB" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                </hints3:hintedElement>
+                <hints3:hintedElement xsi:type="hints3:HintedElement">
+                    <hints3:target xlink:href="#interfaceffffff83-f47af6ef-a5ca6a3b-a8ed008b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:property hints3:name="glass/anchorPoint" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="10550,10208" hints3:type="org.eclipse.swt.graphics.Point" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="glass/anchorPoint-StuckInfo" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="{EDGE,{0.0,0.33}}" hints3:type="{[Ljava.lang.Object;,2,enum:edu.uci.isr.bna4.logics.coordinating.MaintainStickyPointLogic$StickyMode,{[F,2,java.lang.Float,java.lang.Float}}" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="background/color" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="255,255,255" hints3:type="org.eclipse.swt.graphics.RGB" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                </hints3:hintedElement>
+                <hints3:hintedElement xsi:type="hints3:HintedElement">
+                    <hints3:target xlink:href="#linkffffff83-f47b4dc1-c3cd55ea-a8ed00c9" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:property hints3:name="glass/midpoints" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="{}" hints3:type="{[Lorg.eclipse.swt.graphics.Point;,0}" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="glass/endpoint1" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="10305,10225" hints3:type="org.eclipse.swt.graphics.Point" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="glass/endpoint2" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="10545,10208" hints3:type="org.eclipse.swt.graphics.Point" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="glass/endpoint1-StuckInfo" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="{EDGE_FROM_CENTER}" hints3:type="{[Ljava.lang.Object;,1,enum:edu.uci.isr.bna4.logics.coordinating.MaintainStickyPointLogic$StickyMode}" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="glass/endpoint2-StuckInfo" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="{EDGE_FROM_CENTER}" hints3:type="{[Ljava.lang.Object;,1,enum:edu.uci.isr.bna4.logics.coordinating.MaintainStickyPointLogic$StickyMode}" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                </hints3:hintedElement>
+                
+                
+                
             </hints3:hintedElement>
         </hints3:hintedElement>
     </hints3:renderingHints3>
@@ -168,5 +247,32 @@
             
             
         </changes:changes>
+        <changes:changes changes:id="changesffffff83-f47a1e52-689d173a-a8ed005c" changes:status="unmapped" xsi:type="changes:Changes">
+            <changes:description xsi:type="instance:Description">2016-10-23 21:17</changes:description>
+            <changes:componentChange changes:id="componentChangeffffff83-f47a1e55-e9c7f85a-a8ed0060" xsi:type="changes:ComponentChange" changes:type="update">
+                <changes:description xsi:type="instance:Description">New interface</changes:description>
+                <changes:component xlink:href="#componentffffff83-f42c98f7-16a3bf31-666b0006" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:interfaceChange changes:id="interfaceChangeffffff83-f47a1e5b-4e4d9a31-a8ed0063" xsi:type="changes:InterfaceChange" changes:type="add">
+                    <changes:interface xlink:href="#interfaceffffff83-f47a1e49-2bf2e61c-a8ed005b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                </changes:interfaceChange>
+            </changes:componentChange>
+            <changes:componentChange changes:id="componentChangeffffff83-f47ac420-be672621-a8ed0068" xsi:type="changes:ComponentChange" changes:type="add">
+                <changes:description xsi:type="instance:Description">New Component</changes:description>
+                <changes:component xlink:href="#componentffffff83-f47ac41f-50a0ec22-a8ed0067" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </changes:componentChange>
+            <changes:componentChange changes:id="componentChangeffffff83-f47af6f0-db93aa70-a8ed008c" xsi:type="changes:ComponentChange" changes:type="update">
+                <changes:description xsi:type="instance:Description">New interface</changes:description>
+                <changes:component xlink:href="#componentffffff83-f47ac41f-50a0ec22-a8ed0067" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:interfaceChange changes:id="interfaceChangeffffff83-f47af6f1-e2309a14-a8ed008f" xsi:type="changes:InterfaceChange" changes:type="add">
+                    <changes:interface xlink:href="#interfaceffffff83-f47af6ef-a5ca6a3b-a8ed008b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                </changes:interfaceChange>
+            </changes:componentChange>
+            <changes:linkChange changes:id="linkChangeffffff83-f47b4dc5-e28fdea0-a8ed00cc" xsi:type="changes:LinkChange" changes:type="add">
+                <changes:description xsi:type="instance:Description">New Link</changes:description>
+                <changes:link xlink:href="#linkffffff83-f47b4dc1-c3cd55ea-a8ed00c9" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </changes:linkChange>
+        </changes:changes>
+        
+        
     </changes:archChange>
 </instance:xArch>
