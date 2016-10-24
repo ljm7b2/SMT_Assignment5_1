@@ -5,14 +5,15 @@ import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
 import edu.uci.isr.myx.fw.MyxUtils;
 
-public class GameArch extends AbstractMyxSimpleBrick implements IClock
+public class ClockArch extends AbstractMyxSimpleBrick
 {
     public static final IMyxName msg_IClock = MyxUtils.createName("AsteroidsArch.IClock");
 
+    public IClock OUT_IClock;
 
-	private IGameImp _imp;
+	private IClockImp _imp;
 
-    public GameArch (){
+    public ClockArch (){
 		_imp = getImplementation();
 		if (_imp != null){
 			_imp.setArch(this);
@@ -21,9 +22,9 @@ public class GameArch extends AbstractMyxSimpleBrick implements IClock
 		}
 	}
     
-    protected IGameImp getImplementation(){
+    protected IClockImp getImplementation(){
         try{
-			return new GameImp();    
+			return new ClockImp();    
         } catch (Exception e){
             System.err.println(e.getMessage());
             return null;
@@ -35,6 +36,11 @@ public class GameArch extends AbstractMyxSimpleBrick implements IClock
     }
     
     public void begin(){
+        OUT_IClock = (IClock) MyxUtils.getFirstRequiredServiceObject(this,msg_IClock);
+        if (OUT_IClock == null){
+ 			System.err.println("Error: Interface AsteroidsArch.IClock returned null");
+			return;       
+        }
         _imp.begin();
     }
     
@@ -47,23 +53,6 @@ public class GameArch extends AbstractMyxSimpleBrick implements IClock
     }
     
 	public Object getServiceObject(IMyxName arg0) {
-		if (arg0.equals(msg_IClock)){
-			return this;
-		}        
 		return null;
 	}
-  
-    
-    public void setPaused (boolean paused)   {
-		_imp.setPaused(paused);
-    }    
-    public boolean isPaused ()   {
-		return _imp.isPaused();
-    }    
-    public void update ()   {
-		_imp.update();
-    }    
-    public boolean hasElapsedCycle ()   {
-		return _imp.hasElapsedCycle();
-    }    
 }

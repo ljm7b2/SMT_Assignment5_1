@@ -1,16 +1,16 @@
 package AsteroidsArch;
 
 
-import AsteroidsArch.GameArch;
+import AsteroidsArch.ClockArch;
 
-public interface IGameImp 
+public interface IClockImp 
 {
 
 	/*
 	  Getter and Setter of architecture reference
 	*/
-    public void setArch (GameArch arch);
-	public GameArch getArch();
+    public void setArch (ClockArch arch);
+	public ClockArch getArch();
 	
 	/*
   	  Myx Lifecycle Methods: these methods are called automatically by the framework
@@ -24,10 +24,4 @@ public interface IGameImp
 	/*
   	  Implementation primitives required by the architecture
 	*/
-  
-    
-    public void setPaused (boolean paused)  ;        
-    public boolean isPaused ()  ;        
-    public void update ()  ;        
-    public boolean hasElapsedCycle ()  ;        
 }
