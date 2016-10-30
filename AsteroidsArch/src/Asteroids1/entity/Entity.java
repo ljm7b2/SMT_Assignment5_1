@@ -164,7 +164,8 @@ public abstract class Entity {
 	 * @param game The game instance.
 	 * @param other The Entity that we collided with.
 	 */
-	public abstract void handleCollision(GameImp game, Entity other);
+	public abstract void handleCollision(GameImp game, Entity other, int player);
+	
 	
 	/**
 	 * Draw this Entity onto the window.
@@ -172,4 +173,6 @@ public abstract class Entity {
 	 * @param game The game instance.
 	 */
 	public abstract void draw(Graphics2D g, GameImp game);
+	
+	public abstract int getPlayerNumber();
 }

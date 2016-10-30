@@ -74,6 +74,8 @@ public class Asteroid extends Entity {
 	 */
 	private double rotationSpeed;
 	
+	public int playerNumber = 0;
+	
 	/**
 	 * Creates a new Asteroid randomly in the world.
 	 * @param random The Random instance.
@@ -135,7 +137,7 @@ public class Asteroid extends Entity {
 	}
 	
 	@Override
-	public void handleCollision(GameImp game, Entity other) {
+	public void handleCollision(GameImp game, Entity other, int player) {
 		//Prevent collisions with other asteroids.
 		if(other.getClass() != Asteroid.class) {
 			//Only spawn "children" if we're not a Small asteroid.
@@ -153,8 +155,18 @@ public class Asteroid extends Entity {
 			flagForRemoval();
 			
 			//Award the player points for killing the Asteroid.
-			game.addScore(getKillScore());		
+			if(player == 1){
+				game.addScore(getKillScore());
+			}else{
+				game.addScore2(getKillScore());
+			}		
 		}
+	}
+
+	@Override
+	public int getPlayerNumber() {
+		// TODO Auto-generated method stub
+		return this.playerNumber;
 	}
 	
 }

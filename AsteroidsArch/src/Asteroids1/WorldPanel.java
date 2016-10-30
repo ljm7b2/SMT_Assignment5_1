@@ -70,7 +70,7 @@ public class WorldPanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g2d.setColor(Color.WHITE); //Set the draw color to white.
+		g2d.setColor(Color.GREEN); //Set the draw color to white.
 		
 		//Grab a reference to the current "identity" transformation, so we can reset for each object.
 		AffineTransform identity = g2d.getTransform();
@@ -85,7 +85,7 @@ public class WorldPanel extends JPanel {
 			 * We should only draw the player if it is not dead, so we need to
 			 * ensure that the entity can be rendered.
 			 */
-			if(entity != game.getPlayer() || game.canDrawPlayer()) {
+			if(entity != game.getPlayer() || game.canDrawPlayer() || entity != game.getPlayer2() || game.canDrawPlayer2()) {
 				Vector2 pos = entity.getPosition(); //Get the position of the entity.
 				
 				//Draw the entity at it's actual position, and reset the transformation.
@@ -124,6 +124,7 @@ public class WorldPanel extends JPanel {
 		//Draw the score string in the top left corner if we are still playing.
 		if(!game.isGameOver()) {
 			g.drawString("Score: " + game.getScore(), 10, 15);
+			g.drawString("Score: " + game.getScore2(), 425, 15);
 		}
 		
 		//Draw some overlay text depending on the game state.
@@ -140,6 +141,15 @@ public class WorldPanel extends JPanel {
 		g2d.translate(15, 30);
 		g2d.scale(0.85, 0.85);
 		for(int i = 0; i < game.getLives(); i++) {
+			g2d.drawLine(-8, 10, 0, -10);
+			g2d.drawLine(8, 10, 0, -10);
+			g2d.drawLine(-6, 6, 6, 6);
+			g2d.translate(30, 0);
+		}
+		
+		g2d.translate(400, 0);
+		g2d.scale(0.85, 0.85);
+		for(int i = 0; i < game.getLives2(); i++) {
 			g2d.drawLine(-8, 10, 0, -10);
 			g2d.drawLine(8, 10, 0, -10);
 			g2d.drawLine(-6, 6, 6, 6);
