@@ -1,5 +1,8 @@
 package AsteroidsArch;
 
+import Asteroids1.util.hasElapsedCycle;
+import Asteroids1.util.peekElapsedCycle;
+
 public class ClockImp implements IClockImp
 {
 	private ClockArch _arch;

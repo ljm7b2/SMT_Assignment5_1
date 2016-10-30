@@ -17,7 +17,8 @@ import javax.swing.JFrame;
 
 import Asteroids1.entity.Asteroid;
 import Asteroids1.entity.Entity;
-//import Asteroids1.entity.Player;
+import Asteroids1.entity.Player;
+import Asteroids1.util.Clock;
 import Asteroids1.WorldPanel;
 
 
@@ -74,7 +75,7 @@ public class GameImp extends JFrame implements IGameImp
 	/**
 	 * The Clock instance for handling the game updates.
 	 */
-	//private Clock logicTimer;
+	private Clock logicTimer;
 	
 	/**
 	 * The Random instance for spawning entities.
@@ -225,8 +226,7 @@ public class GameImp extends JFrame implements IGameImp
 				//Indicate that we want to pause the game.
 				case KeyEvent.VK_P:
 					if(!checkForRestart()) {
-						//logicTimer.setPaused(!logicTimer.isPaused());
-						_arch.OUT_IClock.setPaused(_arch.OUT_IClock.isPaused());
+						logicTimer.setPaused(!logicTimer.isPaused());
 					}
 					break;
 				case KeyEvent.VK_R:
@@ -305,7 +305,7 @@ public class GameImp extends JFrame implements IGameImp
 		resetGame();
 		
 		//Create the logic timer and enter the game loop.
-		//this.logicTimer = new Clock(FRAMES_PER_SECOND);
+		this.logicTimer = new Clock(FRAMES_PER_SECOND);
 		while(true) {
 			//Get the time that the frame started.
 			long start = System.nanoTime();
@@ -315,10 +315,8 @@ public class GameImp extends JFrame implements IGameImp
 			 * starts to fall behind, the game will update multiple times for each
 			 * frame that is rendered in order to catch up.
 			 */
-			//logicTimer.update();
-			_arch.OUT_IClock.update();
-			//for(int i = 0; i < 5 && logicTimer.hasElapsedCycle(); i++) {
-			for(int i = 0; i < 5 && _arch.OUT_IClock.hasElapsedCycle(); i++) {
+			logicTimer.update();
+			for(int i = 0; i < 5 && logicTimer.hasElapsedCycle(); i++) {
 				updateGame();
 			}
 			
@@ -594,7 +592,7 @@ public class GameImp extends JFrame implements IGameImp
 	 * @return Whether or not the game is paused.
 	 */
 	public boolean isPaused() {
-		return _arch.OUT_IClock.isPaused();
+		return logicTimer.isPaused();
 	}
 	
 	/**
@@ -680,7 +678,7 @@ public class GameImp extends JFrame implements IGameImp
 		GameArgs.put("max_bullets",_arch.OUT_IPlayer.SetMaxBullets());
 		GameArgs.put("fire_rate", _arch.OUT_IPlayer.SetFireRate());
 		
-		//GameArgs.put("cycles_per_second", _arch.OUT_IClock.SetCyclesPerSecond());
+		GameArgs.put("cycles_per_second", _arch.OUT_IClock.SetCyclesPerSecond());
 		
 		GameArgs.put("velocity_magnitude", _arch.OUT_IBullet.SetVelocityMagnitude());
 		GameArgs.put("max_lifespan", _arch.OUT_IBullet.SetMaxLifeSpan());

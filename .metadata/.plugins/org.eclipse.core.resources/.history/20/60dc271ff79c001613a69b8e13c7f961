@@ -17,7 +17,8 @@ import javax.swing.JFrame;
 
 import Asteroids1.entity.Asteroid;
 import Asteroids1.entity.Entity;
-//import Asteroids1.entity.Player;
+import Asteroids1.entity.Player;
+//import Asteroids1.util.Clock;
 import Asteroids1.WorldPanel;
 
 
@@ -680,7 +681,7 @@ public class GameImp extends JFrame implements IGameImp
 		GameArgs.put("max_bullets",_arch.OUT_IPlayer.SetMaxBullets());
 		GameArgs.put("fire_rate", _arch.OUT_IPlayer.SetFireRate());
 		
-		//GameArgs.put("cycles_per_second", _arch.OUT_IClock.SetCyclesPerSecond());
+		GameArgs.put("cycles_per_second", _arch.OUT_IClock.SetCyclesPerSecond());
 		
 		GameArgs.put("velocity_magnitude", _arch.OUT_IBullet.SetVelocityMagnitude());
 		GameArgs.put("max_lifespan", _arch.OUT_IBullet.SetMaxLifeSpan());

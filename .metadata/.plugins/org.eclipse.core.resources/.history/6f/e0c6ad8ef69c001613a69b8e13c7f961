@@ -52,19 +52,8 @@ public class ClockArch extends AbstractMyxSimpleBrick implements IClock
 		}        
 		return null;
 	}
-	
-	public void setPaused(boolean paused){
-		_imp.setPaused(paused);
-	}
-	public boolean isPaused(){
-		return _imp.isPaused();
-	}
-	public void update(){
-		_imp.update();
-	}
-	public boolean hasElapsedCycle(){
-		return _imp.hasElapsedCycle();
-	}   
+  
+    
     public String SetCyclesPerSecond ()   {
 		return _imp.SetCyclesPerSecond();
     }    

@@ -45,7 +45,7 @@ public class WorldPanel extends JPanel {
 	/**
 	 * The Game instance.
 	 */
-	//private GameImp game;
+	private GameImp game;
 	
 	/**
 	 * Creates a new WorldPanel instance.

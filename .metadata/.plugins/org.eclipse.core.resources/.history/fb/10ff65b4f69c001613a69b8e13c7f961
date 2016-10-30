@@ -1,20 +1,18 @@
 package AsteroidsArch;
 
-import Asteroids1.Game;
 
 
-
-public class GameImp implements IGameImp
+public class ClockImp implements IClockImp
 {
-	private GameArch _arch;
+	private ClockArch _arch;
 
-    public GameImp (){
+    public ClockImp (){
     }
 
-	public void setArch(GameArch arch){
+	public void setArch(ClockArch arch){
 		_arch = arch;
 	}
-	public GameArch getArch(){
+	public ClockArch getArch(){
 		return _arch;
 	}
 
@@ -27,7 +25,6 @@ public class GameImp implements IGameImp
 	}
 	public void begin(){
 		//TODO Auto-generated method stub
-		
 	}
 	public void end(){
 		//TODO Auto-generated method stub
@@ -39,4 +36,10 @@ public class GameImp implements IGameImp
 	/*
   	  Implementation primitives required by the architecture
 	*/
+  
+    
+    public String SetCyclesPerSecond ()   {
+		//TODO Auto-generated method stub
+		return "60";
+    }
 }

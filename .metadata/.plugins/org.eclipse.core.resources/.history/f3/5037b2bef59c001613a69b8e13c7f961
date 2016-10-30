@@ -1,13 +1,16 @@
 package AsteroidsArch;
 
+import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -16,54 +19,12 @@ import Asteroids1.entity.Asteroid;
 import Asteroids1.entity.Entity;
 import Asteroids1.entity.Player;
 import Asteroids1.util.Clock;
+import Asteroids1.WorldPanel;
 
 
 
-public class GameImp implements IGameImp
+public class GameImp extends JFrame implements IGameImp
 {
-	private GameArch _arch;
-
-    public GameImp (){
-    }
-
-	public void setArch(GameArch arch){
-		_arch = arch;
-	}
-	public GameArch getArch(){
-		return _arch;
-	}
-
-	/*
-  	  Myx Lifecycle Methods: these methods are called automatically by the framework
-  	  as the bricks are created, attached, detached, and destroyed respectively.
-	*/	
-	public void init(){
-	    //TODO Auto-generated method stub
-	}
-	public void begin(){
-		//TODO Auto-generated method stub
-		String[] args = {};
-		Game.main(args);
-	}
-	public void end(){
-		//TODO Auto-generated method stub
-	}
-	public void destroy(){
-		//TODO Auto-generated method stub
-	}
-
-	/*
-  	  Implementation primitives required by the architecture
-	*/
-}
-
-/**
- * The {@code Game} class is responsible for initializing and running the game.
- * @author Brendan Jones
- *
- */
-public class Game extends JFrame {
-	
 	/**
 	 * The Serial Version Unique Identifier.
 	 */
@@ -72,7 +33,7 @@ public class Game extends JFrame {
 	/**
 	 * The number of frame per second the game should run at.
 	 */
-	private static final int FRAMES_PER_SECOND = 60;
+	private static int FRAMES_PER_SECOND = 60;
 	
 	/**
 	 * The number of nanoseconds that should elapse each frame. This is far more
@@ -193,12 +154,14 @@ public class Game extends JFrame {
 	 */
 	private boolean restartGame;
 	
+	private static List<String> PlayerArgs;
+	
 	/**
 	 * Create a new instance of the Game.
 	 */
-	private Game() {
+	public void Game() {
 		//Initialize the window's basic properties.
-		super("Asteroids");
+		//super("Asteroids");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
@@ -266,6 +229,11 @@ public class Game extends JFrame {
 						logicTimer.setPaused(!logicTimer.isPaused());
 					}
 					break;
+				case KeyEvent.VK_R:
+					if(!checkForRestart()) {
+						resetGame();
+					}
+					break;
 					
 				//Handle all other key presses.
 				default:
@@ -331,7 +299,7 @@ public class Game extends JFrame {
 		this.random = new Random();
 		this.entities = new LinkedList<Entity>();
 		this.pendingEntities = new ArrayList<>();
-		this.player = new Player();
+		this.player = new Player(PlayerArgs);
 		
 		//Set the variables to their default values.
 		resetGame();
@@ -663,13 +631,97 @@ public class Game extends JFrame {
 	 * Entry point of the program. Creates and starts a new game instance.
 	 * @param args Unused command line arguments.
 	 */
-	public static void main(String[] args) {
-		Game game = new Game();
-		game.startGame();
+//	public static void main(String[] args) {
+//		GameImp game = new GameImp();
+//		game.startGame();
+//	}
+//	
+//	public void callMain(){
+//		main(null);
+//	}
+	
+	
+	public void AssignGlobalVariables(Map<String, String> GArgs){
+		
+		String mv, rs, mb, fr;
+		PlayerArgs = new ArrayList<String>();
+	
+		if(GArgs.containsKey("cycles_per_second") && !(GArgs.get("cycles_per_second").toString()).equals("60")){
+			FRAMES_PER_SECOND = Integer.parseInt(GArgs.get("cycles_per_second").toString());
+		}
+		
+		if(GArgs.containsKey("max_velocity") && GArgs.containsKey("rotation_speed")
+				&& GArgs.containsKey("max_bullets") && GArgs.containsKey("fire_rate")){
+			mv = GArgs.get("max_velocity");
+			rs = GArgs.get("rotation_speed");
+			mb = GArgs.get("max_bullets");
+			fr = GArgs.get("fire_rate");
+			
+			PlayerArgs.add(mv);
+			PlayerArgs.add(rs);
+			PlayerArgs.add(mb);
+			PlayerArgs.add(fr);			
+		}
+		
+		if(GArgs.containsKey("velocity_magnitude") && GArgs.containsKey("max_lifespan")){
+			PlayerArgs.add(GArgs.get("velocity_magnitude"));
+			PlayerArgs.add(GArgs.get("max_lifespan"));
+		}
+	
 	}
 	
-	public void callMain(){
-		main(null);
+	public Map<String, String> getVariables(){
+		Map<String, String> GameArgs = new HashMap<String,String>();
+		
+		GameArgs.put("max_velocity", _arch.OUT_IPlayer.SetMaxVelocity());
+		GameArgs.put("rotation_speed", _arch.OUT_IPlayer.SetRotationSpeed());
+		GameArgs.put("max_bullets",_arch.OUT_IPlayer.SetMaxBullets());
+		GameArgs.put("fire_rate", _arch.OUT_IPlayer.SetFireRate());
+		
+		GameArgs.put("cycles_per_second", _arch.OUT_IClock.SetCyclesPerSecond());
+		
+		GameArgs.put("velocity_magnitude", _arch.OUT_IBullet.SetVelocityMagnitude());
+		GameArgs.put("max_lifespan", _arch.OUT_IBullet.SetMaxLifeSpan());
+
+		return GameArgs;		
+	}
+	
+	private GameArch _arch;
+	
+	
+
+    public GameImp (){
+    	super("Asteroids");
+    }
+
+	public void setArch(GameArch arch){
+		_arch = arch;
+	}
+	public GameArch getArch(){
+		return _arch;
 	}
 
+	/*
+  	  Myx Lifecycle Methods: these methods are called automatically by the framework
+  	  as the bricks are created, attached, detached, and destroyed respectively.
+	*/	
+	public void init(){
+	    //TODO Auto-generated method stub
+	}
+	public void begin(){
+		//TODO Auto-generated method stub
+		AssignGlobalVariables(getVariables());
+    	Game();
+    	startGame();		
+	}
+	public void end(){
+		//TODO Auto-generated method stub
+	}
+	public void destroy(){
+		//TODO Auto-generated method stub
+	}
+
+	/*
+  	  Implementation primitives required by the architecture
+	*/
 }
