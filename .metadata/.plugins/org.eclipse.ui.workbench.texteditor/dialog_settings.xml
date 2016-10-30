@@ -2,18 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Player" key="selection"/>
+		<item value="isGameOver" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="isGameOver"/>
+			<item value="lives == 0"/>
+			<item value="getplayer"/>
+			<item value="live"/>
+			<item value="lives"/>
+			<item value="getscore"/>
+			<item value="addscore"/>
 			<item value="player"/>
-			<item value="_arch"/>
-			<item value="getArch()"/>
-			<item value="startGame"/>
-			<item value="PlayerArgs"/>
-			<item value="package Asteroids1;"/>
 		</list>
 		<list key="replacehistory">
 		</list>
