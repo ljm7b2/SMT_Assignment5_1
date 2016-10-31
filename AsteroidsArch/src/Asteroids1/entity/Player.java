@@ -108,10 +108,12 @@ public class Player extends Entity {
 	
 	private int max_lifespan;
 	
+	private int playerNumber;
+	
 	/**
 	 * Initializes a new Player instance.
 	 */
-	public Player(List<String> PlayerArgs) {
+	public Player(List<String> PlayerArgs, int PlayerNumber) {
 		super(new Vector2(WorldPanel.WORLD_SIZE / 2.0, WorldPanel.WORLD_SIZE / 2.0), new Vector2(0.0, 0.0), 10.0, 0);
 		this.bullets = new ArrayList<>();
 		this.rotation = DEFAULT_ROTATION;
@@ -131,6 +133,8 @@ public class Player extends Entity {
 		
 		this.velocity_magnitude = Double.valueOf(PlayerArgs.get(4));
 		this.max_lifespan = Integer.valueOf(PlayerArgs.get(5));
+		
+		this.playerNumber = PlayerNumber;
 		
 //		this.MAX_VELOCITY_MAGNITUDE = (Double.valueOf(PlayerArgs.get(0))) != null ? Double.valueOf(PlayerArgs.get(0)) : 6.5;
 //		this.ROTATION_SPEED = (Double.valueOf(PlayerArgs.get(1))) != null ? Double.valueOf(PlayerArgs.get(1)) : 0.052;
@@ -277,7 +281,7 @@ public class Player extends Entity {
 			if(bullets.size() < MAX_BULLETS) {
 				this.fireCooldown = FIRE_RATE;
 				
-				Bullet bullet = new Bullet(this, rotation, velocity_magnitude, max_lifespan);
+				Bullet bullet = new Bullet(this, rotation, velocity_magnitude, max_lifespan, this.playerNumber);
 				bullets.add(bullet);
 				game.registerEntity(bullet);
 			}
@@ -303,10 +307,10 @@ public class Player extends Entity {
 	}
 	
 	@Override
-	public void handleCollision(GameImp game, Entity other) {
+	public void handleCollision(GameImp game, Entity other, int playerNumber) {
 		//Kill the player if it collides with an Asteroid.
 		if(other.getClass() == Asteroid.class) {
-			game.killPlayer();
+			game.killPlayer(this.playerNumber);
 		}
 	}
 	
@@ -316,7 +320,7 @@ public class Player extends Entity {
 		 * When the player recently spawned, it will flash for a few seconds to indicate
 		 * that it is invulnerable. The player will not flash if the game is paused.
 		 */
-		if(!game.isPlayerInvulnerable() || game.isPaused() || animationFrame % 20 < 10) {
+		if(!game.isPlayerInvulnerable(1) || game.isPaused() || animationFrame % 20 < 10) {
 			/*
 			 * Draw the ship. The nose will face right (0.0 on the unit circle). All
 			 * transformations will be handled by the WorldPanel before calling the draw
@@ -332,6 +336,13 @@ public class Player extends Entity {
 				g.drawLine(-6, 6, -12, 0);
 			}
 		}
+
+	}
+
+	@Override
+	public int getPlayerNumber() {
+		// TODO Auto-generated method stub
+		return this.playerNumber;
 	}
 	
 }

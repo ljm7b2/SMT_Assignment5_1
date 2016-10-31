@@ -139,9 +139,16 @@ public class GameImp extends JFrame implements IGameImp
 	 */
 	private int lives;
 	
-	/**
-	 * The current level the player is on.
-	 */
+	//PLAYER 2 VARS
+	private Player player2;
+	private int deathCooldown2;
+	private int showLevelCooldown2;	
+	private int restartCooldown2;	
+	private int score2;	
+	private int lives2;
+	
+	
+	
 	private int level;
 	
 	/**
@@ -194,6 +201,10 @@ public class GameImp extends JFrame implements IGameImp
 				
 				//Indicate that we want to apply thrust to our ship.
 				case KeyEvent.VK_W:
+					if(!checkForRestart()) {
+						player2.setThrusting(true);
+					}
+					break;
 				case KeyEvent.VK_UP:
 					if(!checkForRestart()) {
 						player.setThrusting(true);
@@ -202,6 +213,10 @@ public class GameImp extends JFrame implements IGameImp
 					
 				//Indicate that we want to rotate our ship to the left.
 				case KeyEvent.VK_A:
+					if(!checkForRestart()) {
+						player2.setRotateLeft(true);
+					}
+					break;
 				case KeyEvent.VK_LEFT:
 					if(!checkForRestart()) {
 						player.setRotateLeft(true);
@@ -210,6 +225,10 @@ public class GameImp extends JFrame implements IGameImp
 					
 				//Indicate that we want to rotate our ship to the right.
 				case KeyEvent.VK_D:
+					if(!checkForRestart()) {
+						player2.setRotateRight(true);
+					}
+					break;
 				case KeyEvent.VK_RIGHT:
 					if(!checkForRestart()) {
 						player.setRotateRight(true);
@@ -217,6 +236,11 @@ public class GameImp extends JFrame implements IGameImp
 					break;
 					
 				//Indicate that we want our ship to fire bullets.
+				case KeyEvent.VK_X:
+					if(!checkForRestart()) {
+						player2.setFiring(true);
+					}
+					break;
 				case KeyEvent.VK_SPACE:
 					if(!checkForRestart()) {
 						player.setFiring(true);
@@ -249,23 +273,32 @@ public class GameImp extends JFrame implements IGameImp
 
 				//Indicate that we no long want to apply thrust to the ship.
 				case KeyEvent.VK_W:
+					player2.setThrusting(false);
+					break;
 				case KeyEvent.VK_UP:
 					player.setThrusting(false);
 					break;
 				
 				//Indicate that we no longer want to rotate our ship left.
 				case KeyEvent.VK_A:
+					player2.setRotateLeft(false);
+					break;
 				case KeyEvent.VK_LEFT:
 					player.setRotateLeft(false);
 					break;
 
 				//Indicate that we no longer want to rotate our ship right.
 				case KeyEvent.VK_D:
+					player2.setRotateRight(false);
+					break;
 				case KeyEvent.VK_RIGHT:
 					player.setRotateRight(false);
 					break;
 					
 				//Indicate that we no long want to fire bullets.
+				case KeyEvent.VK_X:
+					player2.setFiring(false);
+					break;
 				case KeyEvent.VK_SPACE:
 					player.setFiring(false);
 					break;	
@@ -284,7 +317,7 @@ public class GameImp extends JFrame implements IGameImp
 	 * @return Whether or not the key restarted the game.
 	 */
 	private boolean checkForRestart() {
-		boolean restart = (isGameOver && restartCooldown <= 0);
+		boolean restart = (isGameOver && restartCooldown <= 0 && restartCooldown <= 0);
 		if(restart) {
 			restartGame = true;
 		}
@@ -299,7 +332,8 @@ public class GameImp extends JFrame implements IGameImp
 		this.random = new Random();
 		this.entities = new LinkedList<Entity>();
 		this.pendingEntities = new ArrayList<>();
-		this.player = new Player(PlayerArgs);
+		this.player = new Player(PlayerArgs, 1);
+		this.player2 = new Player(PlayerArgs, 2);
 		
 		//Set the variables to their default values.
 		resetGame();
@@ -358,12 +392,18 @@ public class GameImp extends JFrame implements IGameImp
 		if(restartCooldown > 0) {
 			this.restartCooldown--;
 		}
+		if(restartCooldown2 > 0) {
+			this.restartCooldown2--;
+		}
 		
 		/*
 		 * Decrement the show level cooldown.
 		 */
 		if(showLevelCooldown > 0) {
 			this.showLevelCooldown--;
+		}
+		if(showLevelCooldown2 > 0) {
+			this.showLevelCooldown2--;
 		}
 		
 		/*
@@ -388,6 +428,8 @@ public class GameImp extends JFrame implements IGameImp
 			//Reset the player's entity to it's default state, and re-enable firing.
 			player.reset();
 			player.setFiringEnabled(true);
+			player2.reset();
+			player2.setFiringEnabled(true);
 			
 			//Add the asteroids to the world.
 			for(int i = 0; i < level + 2; i++) {
@@ -417,11 +459,29 @@ public class GameImp extends JFrame implements IGameImp
 			}
 		}
 		
+		if(deathCooldown2 > 0) {
+			this.deathCooldown2--;
+			switch(deathCooldown2) {
+			
+			//Reset the entity to it's default spawn state, and disable firing.
+			case RESPAWN_COOLDOWN_LIMIT:
+				player2.reset();
+				player2.setFiringEnabled(false);
+				break;
+			
+			//Re-enable the ability to fire, as we're no longer invulnerable.
+			case INVULN_COOLDOWN_LIMIT:
+				player2.setFiringEnabled(true);
+				break;
+			
+			}
+		}
+		
 		/*
 		 * Only run any of the update code if we're not currently displaying the
 		 * level to the player.
 		 */
-		if(showLevelCooldown == 0) {
+		if(showLevelCooldown == 0 || showLevelCooldown2 == 0) {
 			
 			//Iterate through the Entities and update their states.
 			for(Entity entity : entities) {
@@ -443,9 +503,16 @@ public class GameImp extends JFrame implements IGameImp
 				Entity a = entities.get(i);
 				for(int j = i + 1; j < entities.size(); j++) {
 					Entity b = entities.get(j);
-					if(i != j && a.checkCollision(b) && ((a != player && b != player) || deathCooldown <= INVULN_COOLDOWN_LIMIT)) {
-						a.handleCollision(this, b);
-						b.handleCollision(this, a);
+					if(i != j && a.checkCollision(b) && ((a != player && b != player) || deathCooldown <= INVULN_COOLDOWN_LIMIT))
+							{//&& ((a != player2 && b != player2) || deathCooldown2 <= INVULN_COOLDOWN_LIMIT)) {
+						if(a.getPlayerNumber() == 1 || b.getPlayerNumber() == 1){
+							a.handleCollision(this, b, 1);
+							b.handleCollision(this, a, 1);
+						}
+						else if(a.getPlayerNumber() == 2 || b.getPlayerNumber() == 2){
+							a.handleCollision(this, b, 2);
+							b.handleCollision(this, a, 2);
+						}
 					}
 				}
 			}
@@ -468,6 +535,11 @@ public class GameImp extends JFrame implements IGameImp
 		this.level = 0;
 		this.lives = 3;
 		this.deathCooldown = 0;
+		
+		this.score2 = 0;
+		this.lives2 = 3;
+		this.deathCooldown2 = 0;
+		
 		this.isGameOver = false;
 		this.restartGame = false;
 		resetEntityLists();
@@ -480,6 +552,7 @@ public class GameImp extends JFrame implements IGameImp
 		pendingEntities.clear();
 		entities.clear();
 		entities.add(player);
+		entities.add(player2);
 	}
 	
 	/**
@@ -498,9 +571,16 @@ public class GameImp extends JFrame implements IGameImp
 	/**
 	 * Updates the game state to reflect a player death.
 	 */
-	public void killPlayer() {
+	public void killPlayer(int playerNumber) {
 		//Decrement the number of lives that we still have.
-		this.lives--;
+		
+		if(playerNumber == 1){
+			this.lives--;
+		}
+		else if(playerNumber == 2){
+			this.lives2--;
+		}
+		
 	
 		/*
 		 * If there are no lives remaining, prepare the game over state variables,
@@ -511,24 +591,32 @@ public class GameImp extends JFrame implements IGameImp
 		 * reach zero is far longer than anyone would care to run the program
 		 * for.
 		 */
-		if(lives == 0) {
+		if(lives == 0 || lives2 == 0) {
 			this.isGameOver = true;
 			this.restartCooldown = RESET_COOLDOWN_LIMIT;
 			this.deathCooldown = Integer.MAX_VALUE;
+			this.deathCooldown2 = Integer.MAX_VALUE;
 		} else {
 			this.deathCooldown = DEATH_COOLDOWN_LIMIT;
+			this.deathCooldown2 = DEATH_COOLDOWN_LIMIT;
 		}
 		
 		//Disable the ability to fire.
 		player.setFiringEnabled(false);
+		player2.setFiringEnabled(false);
 	}
 	
 	/**
 	 * Add to the current score.
 	 * @param score The number of points to add.
 	 */
-	public void addScore(int score) {
-		this.score += score;
+	public void addScore(int score, int playerNumber) {
+		if(playerNumber == 1){
+			this.score += score;
+		}else{
+			this.score2 += score;
+		}
+		
 	}
 	
 	/**
@@ -551,32 +639,50 @@ public class GameImp extends JFrame implements IGameImp
 	 * Determines whether or not the player is invulnerable.
 	 * @return Whether or not the player is invulnerable.
 	 */
-	public boolean isPlayerInvulnerable() {
-		return (deathCooldown > INVULN_COOLDOWN_LIMIT);
+	public boolean isPlayerInvulnerable(int playerNumber) {
+		if(playerNumber == 1){
+			return (deathCooldown > INVULN_COOLDOWN_LIMIT);
+		}else{
+			return (deathCooldown2 > INVULN_COOLDOWN_LIMIT);
+		}
+		
 	}
 	
 	/**
 	 * Determines whether or not the player can be drawn.
 	 * @return Whether or not the player can be drawn.
 	 */
-	public boolean canDrawPlayer() {
-		return (deathCooldown <= RESPAWN_COOLDOWN_LIMIT);
+	public boolean canDrawPlayer(int playerNumber) {
+		if(playerNumber == 1){
+			return (deathCooldown <= RESPAWN_COOLDOWN_LIMIT);
+		}else{
+			return (deathCooldown2 <= RESPAWN_COOLDOWN_LIMIT);
+		}
+		
 	}
 	
 	/**
 	 * Gets the current score.
 	 * @return The current score.
 	 */
-	public int getScore() {
-		return score;
+	public int getScore(int playerNumber) {
+		if(playerNumber == 1){
+			return score;
+		}else{
+			return score2;
+		}
 	}
 	
 	/**
 	 * Gets the number of lives remaining.
 	 * @return The number of lives remaining.
 	 */
-	public int getLives() {
-		return lives;
+	public int getLives(int playerNumber) {
+		if(playerNumber == 1){
+			return lives;
+		}else{
+			return lives2;
+		}
 	}
 	
 	/**
@@ -599,8 +705,13 @@ public class GameImp extends JFrame implements IGameImp
 	 * Gets whether or not the level is being shown.
 	 * @return Whether or not the level is being shown.
 	 */
-	public boolean isShowingLevel() {
-		return (showLevelCooldown > 0);
+	public boolean isShowingLevel(int playerNumber) {
+		if(playerNumber == 1){
+			return (showLevelCooldown > 0);
+		}else{
+			return (showLevelCooldown2 > 0);
+		}
+		
 	}
 
 	/**
@@ -623,8 +734,13 @@ public class GameImp extends JFrame implements IGameImp
 	 * Gets the Player instance.
 	 * @return
 	 */
-	public Player getPlayer() {
-		return player;
+	public Player getPlayer(int playerNumber) {
+		if(playerNumber == 1){
+			return player;
+		}
+		else{
+			return player2;
+		}
 	}
 	
 	/**

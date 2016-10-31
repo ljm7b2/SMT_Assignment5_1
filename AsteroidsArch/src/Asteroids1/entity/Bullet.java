@@ -26,16 +26,19 @@ public class Bullet extends Entity {
 	 * The number of cycles this Bullet has existed.
 	 */
 	private int lifespan;
+	
+	private int playerNumber;
 
 	/**
 	 * Creates a new Bullet instance.
 	 * @param owner The object that fired the bullet.
 	 * @param angle The direction of the Bullet.
 	 */
-	public Bullet(Entity owner, double angle, double VELOCITY_MAGNITUDE, int mL) {
+	public Bullet(Entity owner, double angle, double VELOCITY_MAGNITUDE, int mL, int playerNumber) {
 		super(new Vector2(owner.position), new Vector2(angle).scale(VELOCITY_MAGNITUDE), 2.0, 0);
 		this.lifespan = mL;
 		this.VELOCITY_MAGNITUDE = VELOCITY_MAGNITUDE;
+		this.playerNumber = playerNumber;
 	}
 	
 	@Override
@@ -50,7 +53,7 @@ public class Bullet extends Entity {
 	}
 
 	@Override
-	public void handleCollision(GameImp game, Entity other) {
+	public void handleCollision(GameImp game, Entity other, int playerNumber) {
 		if(other.getClass() != Player.class) {
 			flagForRemoval();
 		}
@@ -59,6 +62,12 @@ public class Bullet extends Entity {
 	@Override
 	public void draw(Graphics2D g, GameImp game) {
 		g.drawOval(-1, -1, 2, 2);
+	}
+
+	@Override
+	public int getPlayerNumber() {
+		// TODO Auto-generated method stub
+		return this.playerNumber;
 	}
 
 }

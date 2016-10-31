@@ -85,7 +85,7 @@ public class WorldPanel extends JPanel {
 			 * We should only draw the player if it is not dead, so we need to
 			 * ensure that the entity can be rendered.
 			 */
-			if(entity != game.getPlayer() || game.canDrawPlayer()) {
+			if(entity != game.getPlayer(1) || game.canDrawPlayer(1)) {
 				Vector2 pos = entity.getPosition(); //Get the position of the entity.
 				
 				//Draw the entity at it's actual position, and reset the transformation.
@@ -118,28 +118,71 @@ public class WorldPanel extends JPanel {
 					drawEntity(g2d, entity, x, y);
 					g2d.setTransform(identity);
 				}
-			}	
+			}
+			if(entity != game.getPlayer(2) || game.canDrawPlayer(2)) {
+				Vector2 pos = entity.getPosition(); //Get the position of the entity.
+				
+				//Draw the entity at it's actual position, and reset the transformation.
+				drawEntity(g2d, entity, pos.x, pos.y);
+				g2d.setTransform(identity);
+
+				/*
+				 * Here we need to determine whether or not the entity is close enough
+				 * to the edge of the window to wrap around to the other side.
+				 * 
+				 * The conditional statements might look confusing, but they're
+				 * equivalent to:
+				 * 
+				 * double x = pos.x;
+				 * if(pos.x < radius) {
+				 *     x = pos.x + WORLD_SIZE;
+				 * } else if(pos.x > WORLD_SIZE - radius) {
+				 *     x = pos.x - WORLD_SIZE;
+				 * }
+				 * 
+				 */
+				double radius = entity.getCollisionRadius();
+				double x = (pos.x < radius) ? pos.x + WORLD_SIZE
+						: (pos.x > WORLD_SIZE - radius) ? pos.x - WORLD_SIZE : pos.x;
+				double y = (pos.y < radius) ? pos.y + WORLD_SIZE
+						: (pos.y > WORLD_SIZE - radius) ? pos.y - WORLD_SIZE : pos.y;
+				
+				//Draw the entity at it's wrapped position, and reset the transformation.
+				if(x != pos.x || y != pos.y) {
+					drawEntity(g2d, entity, x, y);
+					g2d.setTransform(identity);
+				}
+			}
 		}
 		
 		//Draw the score string in the top left corner if we are still playing.
 		if(!game.isGameOver()) {
-			g.drawString("Score: " + game.getScore(), 10, 15);
+			g.drawString("Score: " + game.getScore(1), 10, 15);
+			g.drawString("Score: " + game.getScore(2), 400, 15);
 		}
 		
 		//Draw some overlay text depending on the game state.
 		if(game.isGameOver()) {
 			drawTextCentered("Game Over", TITLE_FONT, g2d, -25);
-			drawTextCentered("Final Score: " + game.getScore(), SUBTITLE_FONT, g2d, 10);
+			drawTextCentered("Final Score: " + game.getScore(1) +game.getScore(2), SUBTITLE_FONT, g2d, 10);
 		} else if(game.isPaused()) {
 			drawTextCentered("Paused", TITLE_FONT, g2d, -25);
-		} else if(game.isShowingLevel()) {
+		} else if(game.isShowingLevel(1)) {
 			drawTextCentered("Level: " + game.getLevel(), TITLE_FONT, g2d, -25);
 		}
 		
 		//Draw a ship for each life the player has remaining.
 		g2d.translate(15, 30);
 		g2d.scale(0.85, 0.85);
-		for(int i = 0; i < game.getLives(); i++) {
+		for(int i = 0; i < game.getLives(1); i++) {
+			g2d.drawLine(-8, 10, 0, -10);
+			g2d.drawLine(8, 10, 0, -10);
+			g2d.drawLine(-6, 6, 6, 6);
+			g2d.translate(30, 0);
+		}
+		
+		g2d.translate(370, 0);
+		for(int i = 0; i < game.getLives(2); i++) {
 			g2d.drawLine(-8, 10, 0, -10);
 			g2d.drawLine(8, 10, 0, -10);
 			g2d.drawLine(-6, 6, 6, 6);
