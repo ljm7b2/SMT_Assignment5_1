@@ -74,31 +74,31 @@ public class GameArch extends AbstractMyxSimpleBrick
 		return null;
 	}
 	
-	public int getLevel(){
-		return _imp.getLevel();
-	}
-	public int getLives(int playerNumber){
-		return _imp.getLives(playerNumber);
-	}
-	public boolean isShowingLevel(int playerNumber){
-		return _imp.isShowingLevel(playerNumber);
-	}
-	public boolean isPaused(){
-		return _imp.isPaused();
-	}
-	public boolean isGameOver(){
-		return _imp.isGameOver();
-	}
-	public int getScore(int playerNumber){
-		return _imp.getScore(playerNumber);
-	}
-	public Player getPlayer(int playerNumber){
-		return _imp.getPlayer(playerNumber);
-	}
-	public boolean canDrawPlayer(int playerNumber){
-		return _imp.canDrawPlayer(playerNumber);
-	}
-	public List<Entity> getEntities(){
-		return _imp.getEntities();
-	}
+//	public int getLevel(){
+//		return _imp.getLevel();
+//	}
+//	public int getLives(int playerNumber){
+//		return _imp.getLives(playerNumber);
+//	}
+//	public boolean isShowingLevel(int playerNumber){
+//		return _imp.isShowingLevel(playerNumber);
+//	}
+//	public boolean isPaused(){
+//		return _imp.isPaused();
+//	}
+//	public boolean isGameOver(){
+//		return _imp.isGameOver();
+//	}
+//	public int getScore(int playerNumber){
+//		return _imp.getScore(playerNumber);
+//	}
+//	public Player getPlayer(int playerNumber){
+//		return _imp.getPlayer(playerNumber);
+//	}
+//	public boolean canDrawPlayer(int playerNumber){
+//		return _imp.canDrawPlayer(playerNumber);
+//	}
+//	public List<Entity> getEntities(){
+//		return _imp.getEntities();
+//	}
 }

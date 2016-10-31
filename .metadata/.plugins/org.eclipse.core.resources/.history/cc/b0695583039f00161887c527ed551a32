@@ -136,6 +136,13 @@ public class Player extends Entity {
 		
 		this.playerNumber = PlayerNumber;
 		
+//		this.MAX_VELOCITY_MAGNITUDE = (Double.valueOf(PlayerArgs.get(0))) != null ? Double.valueOf(PlayerArgs.get(0)) : 6.5;
+//		this.ROTATION_SPEED = (Double.valueOf(PlayerArgs.get(1))) != null ? Double.valueOf(PlayerArgs.get(1)) : 0.052;
+//		this.MAX_BULLETS = (Integer.valueOf(PlayerArgs.get(2))) != null ? Integer.valueOf(PlayerArgs.get(2)) : 4;
+//		this.FIRE_RATE = (Integer.valueOf(PlayerArgs.get(3))) != null ? Integer.valueOf(PlayerArgs.get(3)) : 4;
+//		
+//		this.velocity_magnitude = (Double.valueOf(PlayerArgs.get(4))) != null ? Double.valueOf(PlayerArgs.get(4)) : 6.75;
+//		this.max_lifespan = (Integer.valueOf(PlayerArgs.get(5))) != null ? Integer.valueOf(PlayerArgs.get(5)) : 60;
 		
 	}
 	

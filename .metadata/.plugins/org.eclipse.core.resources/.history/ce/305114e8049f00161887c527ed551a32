@@ -16,5 +16,7 @@ public interface IGame {
 	public Player getPlayer(int playerNumber);
 	public boolean canDrawPlayer(int playerNumber);
 	public List<Entity> getEntities();
+	
+	public void callMain();
 
 }
