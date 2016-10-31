@@ -3,4 +3,8 @@
 <fullyQualifiedTypeName name="Asteroids1.WorldPanel"/>
 <fullyQualifiedTypeName name="AsteroidsArch.GameImp"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="Asteroids1.entity.Entity"/>
+<fullyQualifiedTypeName name="Asteroids1.entity.Player"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 </qualifiedTypeNameHistroy>

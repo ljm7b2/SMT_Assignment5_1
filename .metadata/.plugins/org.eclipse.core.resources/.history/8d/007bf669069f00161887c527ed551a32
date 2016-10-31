@@ -1,0 +1,6 @@
+package Asteroids1;
+
+public interface IWorldPanel {
+	public int saySomething();
+
+}

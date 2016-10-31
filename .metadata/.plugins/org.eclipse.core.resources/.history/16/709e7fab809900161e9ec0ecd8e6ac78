@@ -1,5 +1,0 @@
-package Asteroids1;
-
-public interface IClock {
-
-}

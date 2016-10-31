@@ -3,6 +3,7 @@ package AsteroidsArch;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import Asteroids1.entity.Asteroid;
 import Asteroids1.entity.Entity;
 import Asteroids1.entity.Player;
 import Asteroids1.util.Clock;
-import Asteroids1.WorldPanel;
+//import Asteroids1.WorldPanel;
 
 
 
@@ -70,7 +71,7 @@ public class GameImp extends JFrame implements IGameImp
 	/**
 	 * The WorldPanel instance.
 	 */
-	private WorldPanel world;
+	//private WorldPanel world;
 	
 	/**
 	 * The Clock instance for handling the game updates.
@@ -174,7 +175,7 @@ public class GameImp extends JFrame implements IGameImp
 		setResizable(false);
 		
 		//Create and add the WorldPanel instance to the window.
-		add(this.world = new WorldPanel(this), BorderLayout.CENTER);
+		//add((Component) _arch.OUT_IWorldPanel, BorderLayout.CENTER);
 		
 		/*
 		 * Here we add a key listener to the window so that we can process incoming
@@ -355,7 +356,7 @@ public class GameImp extends JFrame implements IGameImp
 			}
 			
 			//Repaint the window.
-			world.repaint();
+			_arch.OUT_IWorldPanel.repaint();
 			
 			/*
 			 * Determine how many nanoseconds we have left during this cycle,

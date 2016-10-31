@@ -2,7 +2,7 @@ package Asteroids1.entity;
 
 import java.awt.Graphics2D;
 
-import Asteroids1.WorldPanel;
+//import Asteroids1.WorldPanel;
 import Asteroids1.util.Vector2;
 import AsteroidsArch.GameImp;
 
@@ -130,13 +130,13 @@ public abstract class Entity {
 	public void update(GameImp game) {
 		position.add(velocity);
 		if(position.x < 0.0f) {
-			position.x += WorldPanel.WORLD_SIZE;
+			position.x += 550;
 		}
 		if(position.y < 0.0f) {
-			position.y += WorldPanel.WORLD_SIZE;
+			position.y += 550;
 		}
-		position.x %= WorldPanel.WORLD_SIZE;
-		position.y %= WorldPanel.WORLD_SIZE;
+		position.x %= 550;
+		position.y %= 550;
 	}
 	
 	/**

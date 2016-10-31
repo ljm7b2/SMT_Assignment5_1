@@ -1,0 +1,5 @@
+package Asteroids1;
+
+public interface IWorldPanel {
+
+}

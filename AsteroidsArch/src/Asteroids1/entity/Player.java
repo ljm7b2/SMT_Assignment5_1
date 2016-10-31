@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import AsteroidsArch.GameImp;
-import Asteroids1.WorldPanel;
+//import Asteroids1.WorldPanel;
 import Asteroids1.util.Vector2;
 
 public class Player extends Entity {
@@ -114,7 +114,7 @@ public class Player extends Entity {
 	 * Initializes a new Player instance.
 	 */
 	public Player(List<String> PlayerArgs, int PlayerNumber) {
-		super(new Vector2(WorldPanel.WORLD_SIZE / 2.0, WorldPanel.WORLD_SIZE / 2.0), new Vector2(0.0, 0.0), 10.0, 0);
+		super(new Vector2(550 / 2.0, 550 / 2.0), new Vector2(0.0, 0.0), 10.0, 0);
 		this.bullets = new ArrayList<>();
 		this.rotation = DEFAULT_ROTATION;
 		this.thrustPressed = false;
@@ -185,7 +185,7 @@ public class Player extends Entity {
 	 */
 	public void reset() {
 		this.rotation = DEFAULT_ROTATION;
-		position.set(WorldPanel.WORLD_SIZE / 2.0, WorldPanel.WORLD_SIZE / 2.0);
+		position.set(550 / 2.0, 550 / 2.0);
 		velocity.set(0.0, 0.0);
 		bullets.clear();
 	}
