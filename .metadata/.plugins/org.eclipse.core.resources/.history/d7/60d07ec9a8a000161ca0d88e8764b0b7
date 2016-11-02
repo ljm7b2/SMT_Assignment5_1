@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import Asteroids1.entity.Asteroid;
 import Asteroids1.entity.Entity;
 import Asteroids1.entity.Player;
+import Asteroids1.util.Clock;
 import Asteroids1.WorldPanel;
 
 
