@@ -134,7 +134,7 @@
             <types:interface types:id="interfaceffffff83-1842b383-77d680d8-4687019b" xsi:type="types:Interface">
                 <types:description xsi:type="instance:Description">[New Interface]</types:description>
                 <types:direction xsi:type="instance:Direction">in</types:direction>
-                <types:type xlink:href="#interfaceTypeffffff83-f410c996-f4b8834c-14fb000d" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <types:type xlink:href="#interfaceTypeffffff83-f410c996-f4b8834c-14fb000d" xlink:type="simple" xsi:type="instance:XMLLink"/>
             </types:interface>
             
             
@@ -205,7 +205,7 @@
             <types:interface types:id="interfaceffffff83-18425dda-486ee4c4-46870174" xsi:type="types:Interface">
                 <types:description xsi:type="instance:Description">[New Interface]</types:description>
                 <types:direction xsi:type="instance:Direction">out</types:direction>
-                <types:type xlink:href="#interfaceTypeffffff83-f410c996-f4b8834c-14fb000d" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <types:type xlink:href="#interfaceTypeffffff83-f410c996-f4b8834c-14fb000d" xlink:type="simple" xsi:type="instance:XMLLink"/>
             </types:interface>
         </types:component>
         <types:link types:id="linkffffff83-f76c2507-b93b9334-13e401f7" xsi:type="types:Link">
@@ -238,10 +238,10 @@
         <types:link types:id="linkffffff83-18430748-511e6fdd-468701a8" xsi:type="types:Link">
             <types:description xsi:type="instance:Description">[New Link]</types:description>
             <types:point xsi:type="instance:Point">
-                <instance:anchorOnInterface xlink:href="#interfaceffffff83-1842b383-77d680d8-4687019b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <instance:anchorOnInterface xlink:href="#interfaceffffff83-1842b383-77d680d8-4687019b" xlink:type="simple" xsi:type="instance:XMLLink"/>
             </types:point>
             <types:point xsi:type="instance:Point">
-                <instance:anchorOnInterface xlink:href="#interfaceffffff83-18425dda-486ee4c4-46870174" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <instance:anchorOnInterface xlink:href="#interfaceffffff83-18425dda-486ee4c4-46870174" xlink:type="simple" xsi:type="instance:XMLLink"/>
             </types:point>
         </types:link>
         
@@ -437,7 +437,7 @@
                     </hints3:property>
                 </hints3:hintedElement>
                 <hints3:hintedElement xsi:type="hints3:HintedElement">
-                    <hints3:target xlink:href="#componentffffff83-184194de-ee5184d6-468700cf" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:target xlink:href="#componentffffff83-184194de-ee5184d6-468700cf" xlink:type="simple" xsi:type="instance:XMLLink"/>
                     <hints3:property hints3:name="glass/boundingBox" xsi:type="hints3:Property">
                         <hints3:value hints3:data="10450,10125,100,50" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
@@ -446,7 +446,7 @@
                     </hints3:property>
                 </hints3:hintedElement>
                 <hints3:hintedElement xsi:type="hints3:HintedElement">
-                    <hints3:target xlink:href="#interfaceffffff83-18425dda-486ee4c4-46870174" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:target xlink:href="#interfaceffffff83-18425dda-486ee4c4-46870174" xlink:type="simple" xsi:type="instance:XMLLink"/>
                     <hints3:property hints3:name="glass/anchorPoint" xsi:type="hints3:Property">
                         <hints3:value hints3:data="10450,10150" hints3:type="org.eclipse.swt.graphics.Point" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
@@ -458,7 +458,7 @@
                     </hints3:property>
                 </hints3:hintedElement>
                 <hints3:hintedElement xsi:type="hints3:HintedElement">
-                    <hints3:target xlink:href="#interfaceffffff83-1842b383-77d680d8-4687019b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:target xlink:href="#interfaceffffff83-1842b383-77d680d8-4687019b" xlink:type="simple" xsi:type="instance:XMLLink"/>
                     <hints3:property hints3:name="glass/anchorPoint" xsi:type="hints3:Property">
                         <hints3:value hints3:data="10275,10200" hints3:type="org.eclipse.swt.graphics.Point" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
@@ -470,7 +470,7 @@
                     </hints3:property>
                 </hints3:hintedElement>
                 <hints3:hintedElement xsi:type="hints3:HintedElement">
-                    <hints3:target xlink:href="#linkffffff83-18430748-511e6fdd-468701a8" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:target xlink:href="#linkffffff83-18430748-511e6fdd-468701a8" xlink:type="simple" xsi:type="instance:XMLLink"/>
                     <hints3:property hints3:name="glass/midpoints" xsi:type="hints3:Property">
                         <hints3:value hints3:data="{}" hints3:type="{[Lorg.eclipse.swt.graphics.Point;,0}" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
@@ -609,27 +609,27 @@
         </changes:changes>
         <changes:changes changes:id="changesffffff83-184194e9-026f8ef3-468700d0" changes:status="unmapped" xsi:type="changes:Changes">
             <changes:description xsi:type="instance:Description">2016-10-30 20:01</changes:description>
-            <changes:componentChange changes:id="componentChangeffffff83-184194ee-f09768f6-468700d3" xsi:type="changes:ComponentChange" changes:type="add">
+            <changes:componentChange changes:id="componentChangeffffff83-184194ee-f09768f6-468700d3" changes:type="add" xsi:type="changes:ComponentChange">
                 <changes:description xsi:type="instance:Description">New Component</changes:description>
-                <changes:component xlink:href="#componentffffff83-184194de-ee5184d6-468700cf" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:component xlink:href="#componentffffff83-184194de-ee5184d6-468700cf" xlink:type="simple" xsi:type="instance:XMLLink"/>
             </changes:componentChange>
-            <changes:componentChange changes:id="componentChangeffffff83-18425ddc-dd02beec-46870175" xsi:type="changes:ComponentChange" changes:type="update">
+            <changes:componentChange changes:id="componentChangeffffff83-18425ddc-dd02beec-46870175" changes:type="update" xsi:type="changes:ComponentChange">
                 <changes:description xsi:type="instance:Description">New interface</changes:description>
-                <changes:component xlink:href="#componentffffff83-184194de-ee5184d6-468700cf" xsi:type="instance:XMLLink" xlink:type="simple"/>
-                <changes:interfaceChange changes:id="interfaceChangeffffff83-18425ddd-0548f8d1-46870178" xsi:type="changes:InterfaceChange" changes:type="add">
-                    <changes:interface xlink:href="#interfaceffffff83-18425dda-486ee4c4-46870174" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:component xlink:href="#componentffffff83-184194de-ee5184d6-468700cf" xlink:type="simple" xsi:type="instance:XMLLink"/>
+                <changes:interfaceChange changes:id="interfaceChangeffffff83-18425ddd-0548f8d1-46870178" changes:type="add" xsi:type="changes:InterfaceChange">
+                    <changes:interface xlink:href="#interfaceffffff83-18425dda-486ee4c4-46870174" xlink:type="simple" xsi:type="instance:XMLLink"/>
                 </changes:interfaceChange>
             </changes:componentChange>
-            <changes:componentChange changes:id="componentChangeffffff83-1842b386-927f5ad8-4687019c" xsi:type="changes:ComponentChange" changes:type="update">
+            <changes:componentChange changes:id="componentChangeffffff83-1842b386-927f5ad8-4687019c" changes:type="update" xsi:type="changes:ComponentChange">
                 <changes:description xsi:type="instance:Description">New interface</changes:description>
-                <changes:component xlink:href="#componentffffff83-f42c98f7-16a3bf31-666b0006" xsi:type="instance:XMLLink" xlink:type="simple"/>
-                <changes:interfaceChange changes:id="interfaceChangeffffff83-1842b387-193a44d3-4687019d" xsi:type="changes:InterfaceChange" changes:type="add">
-                    <changes:interface xlink:href="#interfaceffffff83-1842b383-77d680d8-4687019b" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:component xlink:href="#componentffffff83-f42c98f7-16a3bf31-666b0006" xlink:type="simple" xsi:type="instance:XMLLink"/>
+                <changes:interfaceChange changes:id="interfaceChangeffffff83-1842b387-193a44d3-4687019d" changes:type="add" xsi:type="changes:InterfaceChange">
+                    <changes:interface xlink:href="#interfaceffffff83-1842b383-77d680d8-4687019b" xlink:type="simple" xsi:type="instance:XMLLink"/>
                 </changes:interfaceChange>
             </changes:componentChange>
-            <changes:linkChange changes:id="linkChangeffffff83-1843074a-15c00b63-468701aa" xsi:type="changes:LinkChange" changes:type="add">
+            <changes:linkChange changes:id="linkChangeffffff83-1843074a-15c00b63-468701aa" changes:type="add" xsi:type="changes:LinkChange">
                 <changes:description xsi:type="instance:Description">New Link</changes:description>
-                <changes:link xlink:href="#linkffffff83-18430748-511e6fdd-468701a8" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:link xlink:href="#linkffffff83-18430748-511e6fdd-468701a8" xlink:type="simple" xsi:type="instance:XMLLink"/>
             </changes:linkChange>
         </changes:changes>
         
