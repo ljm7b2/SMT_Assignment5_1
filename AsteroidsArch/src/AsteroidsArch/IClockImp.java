@@ -26,5 +26,9 @@ public interface IClockImp
 	*/
   
     
-    public String SetCyclesPerSecond ()  ;        
+    public String SetCyclesPerSecond ()  ;    
+	public boolean hasElapsedCycle();
+	public boolean isPaused();
+	public void setPaused(boolean paused);
+	public void update();
 }

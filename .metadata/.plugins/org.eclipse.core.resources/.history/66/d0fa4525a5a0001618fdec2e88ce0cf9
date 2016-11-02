@@ -1,0 +1,6 @@
+package AsteroidsArch;
+
+
+public interface IResetGame {
+	public void resetGame();
+}

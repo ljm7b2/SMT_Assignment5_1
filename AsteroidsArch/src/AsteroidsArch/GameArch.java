@@ -14,6 +14,7 @@ public class GameArch extends AbstractMyxSimpleBrick
     public IPlayer OUT_IPlayer;
     public IClock OUT_IClock;
     public IBullet OUT_IBullet;
+    public IResetGame OUT_IResetGame;
 
 	private IGameImp _imp;
 

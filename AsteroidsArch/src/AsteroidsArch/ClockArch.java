@@ -56,5 +56,29 @@ public class ClockArch extends AbstractMyxSimpleBrick implements IClock
     
     public String SetCyclesPerSecond ()   {
 		return _imp.SetCyclesPerSecond();
-    }    
+    }
+
+	@Override
+	public boolean hasElapsedCycle() {
+		// TODO Auto-generated method stub
+		return _imp.hasElapsedCycle();
+	}
+
+	@Override
+	public boolean isPaused() {
+		// TODO Auto-generated method stub
+		return _imp.isPaused();
+	}
+
+	@Override
+	public void setPaused(boolean paused) {
+		_imp.setPaused(paused);
+		
+	}
+
+	@Override
+	public void update() {
+		_imp.update();
+		
+	}    
 }
