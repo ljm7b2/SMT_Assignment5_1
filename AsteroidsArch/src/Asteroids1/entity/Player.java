@@ -190,9 +190,13 @@ public class Player extends Entity {
 	 * Resets the player to it's default spawn position, speed, and rotation,
 	 * and clears the list of bullets.
 	 */
-	public void reset() {
+	public void reset(int playerNumber) {
 		this.rotation = DEFAULT_ROTATION;
-		position.set(WorldPanel.WORLD_SIZE / 2.0, WorldPanel.WORLD_SIZE / 2.0);
+		if(playerNumber == 2){
+			position.set(WorldPanel.WORLD_SIZE / 1.8, WorldPanel.WORLD_SIZE / 1.8);
+		}else{
+			position.set(WorldPanel.WORLD_SIZE / 2.0, WorldPanel.WORLD_SIZE / 2.0);
+		}
 		velocity.set(0.0, 0.0);
 		bullets.clear();
 	}

@@ -425,9 +425,9 @@ public class GameImp extends JFrame implements IGameImp
 			resetEntityLists();
 			
 			//Reset the player's entity to it's default state, and re-enable firing.
-			player.reset();
+			player.reset(1);
 			player.setFiringEnabled(true);
-			player2.reset();
+			player2.reset(2);
 			player2.setFiringEnabled(true);
 			
 			//Add the asteroids to the world.
@@ -446,7 +446,7 @@ public class GameImp extends JFrame implements IGameImp
 			
 			//Reset the entity to it's default spawn state, and disable firing.
 			case RESPAWN_COOLDOWN_LIMIT:
-				player.reset();
+				player.reset(1);
 				player.setFiringEnabled(false);
 				break;
 			
@@ -464,7 +464,7 @@ public class GameImp extends JFrame implements IGameImp
 			
 			//Reset the entity to it's default spawn state, and disable firing.
 			case RESPAWN_COOLDOWN_LIMIT:
-				player2.reset();
+				player2.reset(2);
 				player2.setFiringEnabled(false);
 				break;
 			
